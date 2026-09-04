@@ -1,41 +1,41 @@
 <title>The Long Forecast</title>
 <style>
-  @import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Karla:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap');
+  @import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Karla:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&family=Noto+Sans+Tamil:wght@400;500;600&family=Noto+Serif+Tamil:wght@500;600&display=swap');
 
   :root{
-    --bg:#f2f0e8;
+    --bg:#fff8ef;
     --surface:#ffffff;
-    --surface-muted:#edeae0;
-    --ink:#232733;
-    --ink-soft:#5c6270;
-    --ink-faint:#8b8f9c;
-    --line:rgba(35,39,51,0.14);
-    --line-soft:rgba(35,39,51,0.08);
+    --surface-muted:#fdecd2;
+    --ink:#20232d;
+    --ink-soft:#4d5265;
+    --ink-faint:#7d8296;
+    --line:rgba(32,35,45,0.15);
+    --line-soft:rgba(32,35,45,0.08);
 
-    --caution:#a84f26;
-    --caution-bg:#a84f2616;
-    --steady:#375873;
-    --steady-bg:#37587316;
-    --opportunity:#9c7622;
-    --opportunity-bg:#9c762216;
+    --caution:#d1490c;
+    --caution-bg:#d1490c1e;
+    --steady:#0f6e8c;
+    --steady-bg:#0f6e8c1e;
+    --opportunity:#b8790a;
+    --opportunity-bg:#b8790a1e;
   }
   @media (prefers-color-scheme: dark){
     :root:not([data-theme="light"]){
-      --bg:#14161d; --surface:#1c1f29; --surface-muted:#242836;
-      --ink:#eceef2; --ink-soft:#b0b4c2; --ink-faint:#7d8190;
-      --line:rgba(236,238,242,0.16); --line-soft:rgba(236,238,242,0.08);
-      --caution:#e08a5c; --caution-bg:#e08a5c22;
-      --steady:#8fb2ce; --steady-bg:#8fb2ce22;
-      --opportunity:#e0c072; --opportunity-bg:#e0c07222;
+      --bg:#111319; --surface:#1a1d27; --surface-muted:#232838;
+      --ink:#f5f2ea; --ink-soft:#c3c7d6; --ink-faint:#8b8fa3;
+      --line:rgba(245,242,234,0.18); --line-soft:rgba(245,242,234,0.09);
+      --caution:#ff9d5c; --caution-bg:#ff9d5c26;
+      --steady:#6fd0f0; --steady-bg:#6fd0f026;
+      --opportunity:#ffd166; --opportunity-bg:#ffd16626;
     }
   }
   :root[data-theme="dark"]{
-    --bg:#14161d; --surface:#1c1f29; --surface-muted:#242836;
-    --ink:#eceef2; --ink-soft:#b0b4c2; --ink-faint:#7d8190;
-    --line:rgba(236,238,242,0.16); --line-soft:rgba(236,238,242,0.08);
-    --caution:#e08a5c; --caution-bg:#e08a5c22;
-    --steady:#8fb2ce; --steady-bg:#8fb2ce22;
-    --opportunity:#e0c072; --opportunity-bg:#e0c07222;
+    --bg:#111319; --surface:#1a1d27; --surface-muted:#232838;
+    --ink:#f5f2ea; --ink-soft:#c3c7d6; --ink-faint:#8b8fa3;
+    --line:rgba(245,242,234,0.18); --line-soft:rgba(245,242,234,0.09);
+    --caution:#ff9d5c; --caution-bg:#ff9d5c26;
+    --steady:#6fd0f0; --steady-bg:#6fd0f026;
+    --opportunity:#ffd166; --opportunity-bg:#ffd16626;
   }
 
   *{box-sizing:border-box;}
@@ -46,6 +46,23 @@
   h1,h2,h3{font-family:'Fraunces',Georgia,serif;font-weight:600;text-wrap:balance;color:var(--ink);}
   .mono{font-family:'IBM Plex Mono',ui-monospace,monospace;}
   .kicker{font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.11em;text-transform:uppercase;color:var(--ink-faint);}
+
+  /* ---- Tamil mode font swaps ---- */
+  :root[data-lang="ta"] body{font-family:'Noto Sans Tamil','Karla',ui-sans-serif,sans-serif;}
+  :root[data-lang="ta"] h1,:root[data-lang="ta"] h2,:root[data-lang="ta"] h3,:root[data-lang="ta"] .title{
+    font-family:'Noto Serif Tamil','Fraunces',Georgia,serif;}
+  :root[data-lang="ta"] .mono,:root[data-lang="ta"] .kicker,:root[data-lang="ta"] .pill,
+  :root[data-lang="ta"] .tl-dates,:root[data-lang="ta"] .lbl,:root[data-lang="ta"] .charts,
+  :root[data-lang="ta"] .tag,:root[data-lang="ta"] .lang-btn{font-family:'Noto Sans Tamil',monospace,sans-serif;}
+
+  .top-row{display:flex;align-items:center;gap:12px;margin-bottom:14px;}
+  .lang-toggle{display:flex;gap:3px;background:var(--surface);border:1px solid var(--line);border-radius:20px;
+    padding:3px;margin-left:auto;flex:none;}
+  .lang-btn{font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.05em;text-transform:uppercase;
+    border:none;background:transparent;color:var(--ink-soft);padding:6px 14px;border-radius:16px;cursor:pointer;
+    transition:background .15s ease,color .15s ease;}
+  .lang-btn.active{background:var(--opportunity);color:#fff;}
+  .lang-btn:hover:not(.active){color:var(--ink);}
 
   .banner{background:var(--surface-muted);border:1px solid var(--line);border-radius:8px;
     padding:14px 18px;margin-bottom:36px;display:flex;gap:12px;align-items:baseline;flex-wrap:wrap;}
@@ -115,15 +132,6 @@
     padding-left:14px;position:relative;}
   .tl-basis li::before{content:"—";position:absolute;left:0;color:var(--ink-faint);}
 
-  .ahead{background:var(--surface);border:1px dashed var(--line);border-radius:8px;padding:16px 20px;}
-  .ahead h3{font-size:1rem;margin:0 0 12px;}
-  .ahead-row{display:flex;gap:14px;padding:10px 0;border-top:1px solid var(--line-soft);flex-wrap:wrap;}
-  .ahead-row:first-of-type{border-top:none;padding-top:0;}
-  .ahead-row .adate{font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--ink-faint);min-width:150px;}
-  .ahead-row .atext{flex:1;min-width:220px;}
-  .ahead-row .atext b{color:var(--ink);}
-  .ahead-row .atext span{color:var(--ink-soft);font-size:.92rem;}
-
   hr.div{border:none;border-top:1px solid var(--line);margin:48px 0;}
   .disclaimer{padding-top:18px;border-top:1px solid var(--line);}
   .disclaimer p{font-size:12px;color:var(--ink-faint);font-style:italic;max-width:70ch;margin:0;}
@@ -133,115 +141,122 @@
 
 <div class="page">
 
+  <div class="top-row">
+    <div class="lang-toggle" role="group" aria-label="Language / மொழி">
+      <button type="button" class="lang-btn active" data-lang-btn="en">EN</button>
+      <button type="button" class="lang-btn" data-lang-btn="ta">தமிழ்</button>
+    </div>
+  </div>
+
   <div class="banner">
-    <span class="tag">Updated Sept 2026 · unfiltered</span>
-    <p>The complete version, for your own reference — nothing softened, nothing held back. Now spans his entire life: his first Mahadasha from birth, the current stretch, the full Venus Mahadasha (2051), and every Mahadasha beyond that. The version already shared with the family is the trimmed one, near-term only; this one is yours.</p>
+    <span class="tag" data-k="banner.tag">Updated Sept 2026 · unfiltered</span>
+    <p data-k="banner.p">The complete version, for your own reference — nothing softened, nothing held back. Now spans his entire life: his first Mahadasha from birth, the current stretch, the full Venus Mahadasha (2051), and every Mahadasha beyond that. The version already shared with the family is the trimmed one, near-term only; this one is yours.</p>
   </div>
 
   <div class="masthead">
-    <span class="kicker">Private reference · plain guidance up top, chart reasoning underneath</span>
-    <h1>The Long Forecast</h1>
-    <p class="sub">One shared timeline, two charts, full depth. Each entry: what it tends to feel like, in plain words — then, separated below, the chart reasoning it's built on.</p>
+    <span class="kicker" data-k="mh.kicker">Private reference · plain guidance up top, chart reasoning underneath</span>
+    <h1 data-k="mh.h1">The Long Forecast</h1>
+    <p class="sub" data-k="mh.sub">One shared timeline, two charts, full depth. Each entry: what it tends to feel like, in plain words — then, separated below, the chart reasoning it's built on.</p>
   </div>
 
   <div class="whos-in">
     <div class="chip-person">
-      <span class="kicker">In view</span>
-      <div class="name">Son</div>
-      <div class="charts">D1 Virgo Lagna · D9 Gemini Lagna · b. Feb 2010</div>
+      <span class="kicker" data-k="whosin.kicker">In view</span>
+      <div class="name" data-k="whosin.son.name">Son</div>
+      <div class="charts" data-k="whosin.son.charts">D1 Virgo Lagna · D9 Gemini Lagna · b. Feb 2010</div>
     </div>
     <div class="chip-person">
-      <span class="kicker">In view</span>
-      <div class="name">Father</div>
-      <div class="charts">D1 Leo Lagna · D9 Virgo Lagna · D7 Sagittarius Lagna</div>
+      <span class="kicker" data-k="whosin.kicker">In view</span>
+      <div class="name" data-k="whosin.father.name">Father</div>
+      <div class="charts" data-k="whosin.father.charts">D1 Leo Lagna · D9 Virgo Lagna · D7 Sagittarius Lagna</div>
     </div>
   </div>
 
   <div class="legend">
     <div class="legend-item">
       <svg width="20" height="20" viewBox="0 0 20 20"><path d="M10 2v7M6 12l4-4 4 4M4 17h12" stroke="var(--caution)" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
-      <div><div class="lt" style="color:var(--caution)">Caution</div><div class="ld">extra structure or support worth having ready</div></div>
+      <div><div class="lt" style="color:var(--caution)" data-k="legend.caution.t">Caution</div><div class="ld" data-k="legend.caution.d">extra structure or support worth having ready</div></div>
     </div>
     <div class="legend-item">
       <svg width="20" height="20" viewBox="0 0 20 20"><rect x="3" y="6" width="14" height="9" rx="4" stroke="var(--steady)" stroke-width="1.6" fill="none"/></svg>
-      <div><div class="lt" style="color:var(--steady)">Steady</div><div class="ld">no particular flag — maintain what's working</div></div>
+      <div><div class="lt" style="color:var(--steady)" data-k="legend.steady.t">Steady</div><div class="ld" data-k="legend.steady.d">no particular flag — maintain what's working</div></div>
     </div>
     <div class="legend-item">
       <svg width="20" height="20" viewBox="0 0 20 20"><circle cx="10" cy="10" r="3.4" stroke="var(--opportunity)" stroke-width="1.6" fill="none"/><path d="M10 2v2.4M10 15.6V18M2 10h2.4M15.6 10H18M4.6 4.6l1.7 1.7M13.7 13.7l1.7 1.7M4.6 15.4l1.7-1.7M13.7 6.3l1.7-1.7" stroke="var(--opportunity)" stroke-width="1.4" stroke-linecap="round"/></svg>
-      <div><div class="lt" style="color:var(--opportunity)">Opportunity</div><div class="ld">well-suited to a step forward or a good stretch</div></div>
+      <div><div class="lt" style="color:var(--opportunity)" data-k="legend.opp.t">Opportunity</div><div class="ld" data-k="legend.opp.d">well-suited to a step forward or a good stretch</div></div>
     </div>
   </div>
 
   <!-- ============ CORE TEMPERAMENT ============ -->
   <section>
-    <h2>Core temperament — standing, not tied to a date</h2>
-    <p class="deck">True across his whole chart, not just one period. Read once, revisit rarely.</p>
+    <h2 data-k="s1.h2">Core temperament — standing, not tied to a date</h2>
+    <p class="deck" data-k="s1.deck">True across his whole chart, not just one period. Read once, revisit rarely.</p>
 
     <div class="refcard">
       <div class="plain">
-        <div class="title">Structure isn't optional for him — it's central</div>
-        <p>Predictable routines and a low-surprise environment aren't just nice to have; they're close to load-bearing for how steady he feels day to day. This holds across his whole life, not just now — it's not something he's likely to simply grow out of.</p>
+        <div class="title" data-k="s1.c1.title">Structure isn't optional for him — it's central</div>
+        <p data-k="s1.c1.plain">Predictable routines and a low-surprise environment aren't just nice to have; they're close to load-bearing for how steady he feels day to day. This holds across his whole life, not just now — it's not something he's likely to simply grow out of.</p>
       </div>
       <div class="basis">
-        <span class="lbl">Chart basis</span>
-        <p>D1: three planets (Sun, Venus, Jupiter) cluster in his 6th house of routine and daily functioning. D9: Sun appears in the 6th again, this time with Rahu — the same theme repeating independently. Saturn, ruling that loaded 6th house, sits directly on his Ascendant in D1 — the planet defining his core identity is the same one ruling his most-loaded house.</p>
+        <span class="lbl" data-k="lbl.basis">Chart basis</span>
+        <p data-k="s1.c1.basis">D1: three planets (Sun, Venus, Jupiter) cluster in his 6th house of routine and daily functioning. D9: Sun appears in the 6th again, this time with Rahu — the same theme repeating independently. Saturn, ruling that loaded 6th house, sits directly on his Ascendant in D1 — the planet defining his core identity is the same one ruling his most-loaded house.</p>
       </div>
     </div>
 
     <div class="refcard">
       <div class="plain">
-        <div class="title">His energy doesn't discharge in the usual way</div>
-        <p>Assertiveness and physical energy tend to build internally rather than release in small, steady amounts — which can mean it surfaces with more force than the moment seems to call for. A standing feature of his temperament, not just a symptom of one hard period.</p>
+        <div class="title" data-k="s1.c2.title">His energy doesn't discharge in the usual way</div>
+        <p data-k="s1.c2.plain">Assertiveness and physical energy tend to build internally rather than release in small, steady amounts — which can mean it surfaces with more force than the moment seems to call for. A standing feature of his temperament, not just a symptom of one hard period.</p>
       </div>
       <div class="basis">
-        <span class="lbl">Chart basis</span>
-        <p>Mars — governing energy, drive, and initiative — is debilitated in Cancer and retrograde in his D1, and retrograde again in his D9. A consistently strained signature for this planet across both independent charts.</p>
+        <span class="lbl" data-k="lbl.basis">Chart basis</span>
+        <p data-k="s1.c2.basis">Mars — governing energy, drive, and initiative — is debilitated in Cancer and retrograde in his D1, and retrograde again in his D9. A consistently strained signature for this planet across both independent charts.</p>
       </div>
     </div>
 
     <div class="refcard">
       <div class="plain">
-        <div class="title">A genuinely tender, absorptive inner world</div>
-        <p>He likely picks up on emotional atmosphere and sensory input more than most people around him, and needs real quiet to reset after a lot of stimulation. Not a weakness — it comes with real depth and empathy — but it means environments matter enormously to him.</p>
+        <div class="title" data-k="s1.c3.title">A genuinely tender, absorptive inner world</div>
+        <p data-k="s1.c3.plain">He likely picks up on emotional atmosphere and sensory input more than most people around him, and needs real quiet to reset after a lot of stimulation. Not a weakness — it comes with real depth and empathy — but it means environments matter enormously to him.</p>
       </div>
       <div class="basis">
-        <span class="lbl">Chart basis</span>
-        <p>Moon sits in Pisces in his D1 7th house — one of the most sensitive, permeable placements available to the Moon.</p>
+        <span class="lbl" data-k="lbl.basis">Chart basis</span>
+        <p data-k="s1.c3.basis">Moon sits in Pisces in his D1 7th house — one of the most sensitive, permeable placements available to the Moon.</p>
       </div>
     </div>
 
     <div class="refcard">
       <div class="plain">
-        <div class="title">His mind is the strongest thing he has</div>
-        <p>Whatever else is difficult, his underlying intelligence is a genuine, durable asset — detail-oriented, analytical, capable of real depth once something has his attention. Worth building everything else around, not something in question.</p>
+        <div class="title" data-k="s1.c4.title">His mind is the strongest thing he has</div>
+        <p data-k="s1.c4.plain">Whatever else is difficult, his underlying intelligence is a genuine, durable asset — detail-oriented, analytical, capable of real depth once something has his attention. Worth building everything else around, not something in question.</p>
       </div>
       <div class="basis">
-        <span class="lbl">Chart basis</span>
-        <p>Mercury, his Lagna lord, sits in a trine (5th house) in D1, and in its own sign directly on the Ascendant in D9 — about as strong as this planet gets, confirmed across two independent charts.</p>
+        <span class="lbl" data-k="lbl.basis">Chart basis</span>
+        <p data-k="s1.c4.basis">Mercury, his Lagna lord, sits in a trine (5th house) in D1, and in its own sign directly on the Ascendant in D9 — about as strong as this planet gets, confirmed across two independent charts.</p>
       </div>
     </div>
   </section>
 
   <!-- ============ HIS HISTORY ============ -->
   <section>
-    <h2>Before now — his first Mahadasha (birth to April 2024)</h2>
-    <p class="deck">Mercury Mahadasha, his very first, running from birth to age 14. Read backward, the same method used for what's ahead — not to explain what happened, but to see whether the chart's own logic finds it unsurprising.</p>
+    <h2 data-k="s2.h2">Before now — his first Mahadasha (birth to April 2024)</h2>
+    <p class="deck" data-k="s2.deck">Mercury Mahadasha, his very first, running from birth to age 14. Read backward, the same method used for what's ahead — not to explain what happened, but to see whether the chart's own logic finds it unsurprising.</p>
 
     <div class="timeline">
 
       <div class="tl-item opportunity">
         <div class="tl-card">
           <div class="tl-head">
-            <span class="tl-dates">18 Feb 2010 – 19 Feb 2012 · birth–age 2</span>
-            <div class="tl-tags"><span class="pill opportunity">Opportunity</span><span class="pill who">Son</span></div>
+            <span class="tl-dates">18 Feb 2010 – 19 Feb 2012 · <span data-k="s2.i1.dates">birth–age 2</span></span>
+            <div class="tl-tags"><span class="pill opportunity" data-k="pill.opportunity">Opportunity</span><span class="pill who" data-k="pill.who.son">Son</span></div>
           </div>
           <div class="tl-plain">
-            <div class="title">A strong foundation</div>
-            <p>Mercury as both Mahadasha and Antardasha lord is about as clean a start as this chart offers — his Lagna lord, in his own trikona, expressing on its own terms from day one.</p>
+            <div class="title" data-k="s2.i1.title">A strong foundation</div>
+            <p data-k="s2.i1.plain">Mercury as both Mahadasha and Antardasha lord is about as clean a start as this chart offers — his Lagna lord, in his own trikona, expressing on its own terms from day one.</p>
           </div>
           <div class="tl-basis">
-            <span class="lbl">Chart basis</span>
-            <ul><li>Mercury MD / Mercury AD. Mercury is his Lagna lord, sitting in his 5th house in Friend dignity.</li></ul>
+            <span class="lbl" data-k="lbl.basis">Chart basis</span>
+            <ul><li data-k="s2.i1.li1">Mercury MD / Mercury AD. Mercury is his Lagna lord, sitting in his 5th house in Friend dignity.</li></ul>
           </div>
         </div>
       </div>
@@ -249,16 +264,16 @@
       <div class="tl-item caution">
         <div class="tl-card">
           <div class="tl-head">
-            <span class="tl-dates">19 Feb 2012 – 16 Dec 2012 · age ~2</span>
-            <div class="tl-tags"><span class="pill caution">Caution</span><span class="pill who">Son</span></div>
+            <span class="tl-dates">19 Feb 2012 – 16 Dec 2012 · <span data-k="s2.i2.dates">age ~2</span></span>
+            <div class="tl-tags"><span class="pill caution" data-k="pill.caution">Caution</span><span class="pill who" data-k="pill.who.son">Son</span></div>
           </div>
           <div class="tl-plain">
-            <div class="title">The first, faint echo</div>
-            <p>A short stretch — the earliest appearance, a decade early, of the same Ketu-in-the-10th signature that now runs his current Mahadasha. Easy to miss at the time.</p>
+            <div class="title" data-k="s2.i2.title">The first, faint echo</div>
+            <p data-k="s2.i2.plain">A short stretch — the earliest appearance, a decade early, of the same Ketu-in-the-10th signature that now runs his current Mahadasha. Easy to miss at the time.</p>
           </div>
           <div class="tl-basis">
-            <span class="lbl">Chart basis</span>
-            <ul><li>Mercury MD / Ketu AD. Ketu sits in his 10th house.</li></ul>
+            <span class="lbl" data-k="lbl.basis">Chart basis</span>
+            <ul><li data-k="s2.i2.li1">Mercury MD / Ketu AD. Ketu sits in his 10th house.</li></ul>
           </div>
         </div>
       </div>
@@ -266,16 +281,16 @@
       <div class="tl-item caution">
         <div class="tl-card">
           <div class="tl-head">
-            <span class="tl-dates">16 Dec 2012 – 25 Apr 2015 · age ~2.75–5</span>
-            <div class="tl-tags"><span class="pill caution">Caution</span><span class="pill who">Son</span></div>
+            <span class="tl-dates">16 Dec 2012 – 25 Apr 2015 · <span data-k="s2.i3.dates">age ~2.75–5</span></span>
+            <div class="tl-tags"><span class="pill caution" data-k="pill.caution">Caution</span><span class="pill who" data-k="pill.who.son">Son</span></div>
           </div>
           <div class="tl-plain">
-            <div class="title">The core language-acquisition years</div>
-            <p>Possibly the most relevant early marker in the whole sequence. If early speech or language development showed anything worth noting, this is where the chart would place it.</p>
+            <div class="title" data-k="s2.i3.title">The core language-acquisition years</div>
+            <p data-k="s2.i3.plain">Possibly the most relevant early marker in the whole sequence. If early speech or language development showed anything worth noting, this is where the chart would place it.</p>
           </div>
           <div class="tl-basis">
-            <span class="lbl">Chart basis</span>
-            <ul><li>Mercury MD / Venus AD. Venus rules his 2nd house of speech and sits combust in his 6th house — the speech significator under strain, tied directly to his most-loaded house.</li></ul>
+            <span class="lbl" data-k="lbl.basis">Chart basis</span>
+            <ul><li data-k="s2.i3.li1">Mercury MD / Venus AD. Venus rules his 2nd house of speech and sits combust in his 6th house — the speech significator under strain, tied directly to his most-loaded house.</li></ul>
           </div>
         </div>
       </div>
@@ -283,16 +298,16 @@
       <div class="tl-item caution">
         <div class="tl-card">
           <div class="tl-head">
-            <span class="tl-dates">25 Apr 2015 – 8 Jan 2016 · age ~5</span>
-            <div class="tl-tags"><span class="pill caution">Caution</span><span class="pill who">Son</span></div>
+            <span class="tl-dates">25 Apr 2015 – 8 Jan 2016 · <span data-k="s2.i4.dates">age ~5</span></span>
+            <div class="tl-tags"><span class="pill caution" data-k="pill.caution">Caution</span><span class="pill who" data-k="pill.who.son">Son</span></div>
           </div>
           <div class="tl-plain">
-            <div class="title">Starting school</div>
-            <p>A short window landing almost exactly at typical school-entry age — plausibly some early friction in the transition to structured schooling.</p>
+            <div class="title" data-k="s2.i4.title">Starting school</div>
+            <p data-k="s2.i4.plain">A short window landing almost exactly at typical school-entry age — plausibly some early friction in the transition to structured schooling.</p>
           </div>
           <div class="tl-basis">
-            <span class="lbl">Chart basis</span>
-            <ul><li>Mercury MD / Sun AD. Sun sits in enemy dignity in his 6th house and rules his 12th house of institutions.</li></ul>
+            <span class="lbl" data-k="lbl.basis">Chart basis</span>
+            <ul><li data-k="s2.i4.li1">Mercury MD / Sun AD. Sun sits in enemy dignity in his 6th house and rules his 12th house of institutions.</li></ul>
           </div>
         </div>
       </div>
@@ -300,16 +315,16 @@
       <div class="tl-item steady">
         <div class="tl-card">
           <div class="tl-head">
-            <span class="tl-dates">8 Jan 2016 – 14 Mar 2017 · age ~6</span>
-            <div class="tl-tags"><span class="pill steady">Steady</span><span class="pill who">Son</span></div>
+            <span class="tl-dates">8 Jan 2016 – 14 Mar 2017 · <span data-k="s2.i5.dates">age ~6</span></span>
+            <div class="tl-tags"><span class="pill steady" data-k="pill.steady">Steady</span><span class="pill who" data-k="pill.who.son">Son</span></div>
           </div>
           <div class="tl-plain">
-            <div class="title">A comparatively coherent year</div>
-            <p>Never a low-sensitivity window given where his Moon sits, but a relatively steadier one than its neighbors.</p>
+            <div class="title" data-k="s2.i5.title">A comparatively coherent year</div>
+            <p data-k="s2.i5.plain">Never a low-sensitivity window given where his Moon sits, but a relatively steadier one than its neighbors.</p>
           </div>
           <div class="tl-basis">
-            <span class="lbl">Chart basis</span>
-            <ul><li>Mercury MD / Moon AD. Moon is Friend-placed in Pisces, ruling his 11th house of peer group.</li></ul>
+            <span class="lbl" data-k="lbl.basis">Chart basis</span>
+            <ul><li data-k="s2.i5.li1">Mercury MD / Moon AD. Moon is Friend-placed in Pisces, ruling his 11th house of peer group.</li></ul>
           </div>
         </div>
       </div>
@@ -317,16 +332,16 @@
       <div class="tl-item caution">
         <div class="tl-card">
           <div class="tl-head">
-            <span class="tl-dates">14 Mar 2017 – 9 Jan 2018 · age ~7</span>
-            <div class="tl-tags"><span class="pill caution">Caution</span><span class="pill who">Son</span></div>
+            <span class="tl-dates">14 Mar 2017 – 9 Jan 2018 · <span data-k="s2.i6.dates">age ~7</span></span>
+            <div class="tl-tags"><span class="pill caution" data-k="pill.caution">Caution</span><span class="pill who" data-k="pill.who.son">Son</span></div>
           </div>
           <div class="tl-plain">
-            <div class="title">The first real activation</div>
-            <p>The earliest point his debilitated, retrograde Mars ran as antardasha lord in his life. If age 7 carried a noticeable jump in intensity, this is the exact mechanism that would explain it — the same one now flagged for Oct 2026 and again for 2037.</p>
+            <div class="title" data-k="s2.i6.title">The first real activation</div>
+            <p data-k="s2.i6.plain">The earliest point his debilitated, retrograde Mars ran as antardasha lord in his life. If age 7 carried a noticeable jump in intensity, this is the exact mechanism that would explain it — the same one now flagged for Oct 2026 and again for 2037.</p>
           </div>
           <div class="tl-basis">
-            <span class="lbl">Chart basis</span>
-            <ul><li>Mercury MD / Mars AD — his difficult signature planet, directly activated, for the first time in his life.</li></ul>
+            <span class="lbl" data-k="lbl.basis">Chart basis</span>
+            <ul><li data-k="s2.i6.li1">Mercury MD / Mars AD — his difficult signature planet, directly activated, for the first time in his life.</li></ul>
           </div>
         </div>
       </div>
@@ -334,16 +349,16 @@
       <div class="tl-item caution">
         <div class="tl-card">
           <div class="tl-head">
-            <span class="tl-dates">9 Jan 2018 – 22 Feb 2020 · age ~8–10</span>
-            <div class="tl-tags"><span class="pill caution">Caution</span><span class="pill who">Son</span></div>
+            <span class="tl-dates">9 Jan 2018 – 22 Feb 2020 · <span data-k="s2.i7.dates">age ~8–10</span></span>
+            <div class="tl-tags"><span class="pill caution" data-k="pill.caution">Caution</span><span class="pill who" data-k="pill.who.son">Son</span></div>
           </div>
           <div class="tl-plain">
-            <div class="title">The search-and-settle years</div>
-            <p>A longer, less settled two-year stretch — thematically the kind of window where a family often moves from "something feels off" toward actively seeking evaluation.</p>
+            <div class="title" data-k="s2.i7.title">The search-and-settle years</div>
+            <p data-k="s2.i7.plain">A longer, less settled two-year stretch — thematically the kind of window where a family often moves from "something feels off" toward actively seeking evaluation.</p>
           </div>
           <div class="tl-basis">
-            <span class="lbl">Chart basis</span>
-            <ul><li>Mercury MD / Rahu AD. Rahu sits in his 4th house of home and inner foundation.</li></ul>
+            <span class="lbl" data-k="lbl.basis">Chart basis</span>
+            <ul><li data-k="s2.i7.li1">Mercury MD / Rahu AD. Rahu sits in his 4th house of home and inner foundation.</li></ul>
           </div>
         </div>
       </div>
@@ -351,16 +366,16 @@
       <div class="tl-item steady">
         <div class="tl-card">
           <div class="tl-head">
-            <span class="tl-dates">22 Feb 2020 – 12 Jan 2022 · age ~10–12</span>
-            <div class="tl-tags"><span class="pill steady">Steady</span><span class="pill who">Son</span></div>
+            <span class="tl-dates">22 Feb 2020 – 12 Jan 2022 · <span data-k="s2.i8.dates">age ~10–12</span></span>
+            <div class="tl-tags"><span class="pill steady" data-k="pill.steady">Steady</span><span class="pill who" data-k="pill.who.son">Son</span></div>
           </div>
           <div class="tl-plain">
-            <div class="title">A relative easing</div>
-            <p>The gentler stretch of the back half of childhood, even if not an especially strong one. Outside the chart entirely: this overlaps almost exactly with the pandemic years — worth holding as real-world context alongside the astrological read, not instead of it.</p>
+            <div class="title" data-k="s2.i8.title">A relative easing</div>
+            <p data-k="s2.i8.plain">The gentler stretch of the back half of childhood, even if not an especially strong one. Outside the chart entirely: this overlaps almost exactly with the pandemic years — worth holding as real-world context alongside the astrological read, not instead of it.</p>
           </div>
           <div class="tl-basis">
-            <span class="lbl">Chart basis</span>
-            <ul><li>Mercury MD / Jupiter AD. Jupiter is combust and weak here, but remains a natural benefic.</li></ul>
+            <span class="lbl" data-k="lbl.basis">Chart basis</span>
+            <ul><li data-k="s2.i8.li1">Mercury MD / Jupiter AD. Jupiter is combust and weak here, but remains a natural benefic.</li></ul>
           </div>
         </div>
       </div>
@@ -368,16 +383,16 @@
       <div class="tl-item caution">
         <div class="tl-card">
           <div class="tl-head">
-            <span class="tl-dates">12 Jan 2022 – 8 Apr 2024 · age ~12–14</span>
-            <div class="tl-tags"><span class="pill caution">Caution</span><span class="pill who">Son</span></div>
+            <span class="tl-dates">12 Jan 2022 – 8 Apr 2024 · <span data-k="s2.i9.dates">age ~12–14</span></span>
+            <div class="tl-tags"><span class="pill caution" data-k="pill.caution">Caution</span><span class="pill who" data-k="pill.who.son">Son</span></div>
           </div>
           <div class="tl-plain">
-            <div class="title">The pressure-building chapter</div>
-            <p>Probably the most important entry in this whole retrospective. Runs for over two years, right through early adolescence, and closes out literally days before Ketu Mahadasha began and the move to residential schooling followed. Read plainly: this stretch looks like the run-up to the crisis point, not a separate or unrelated one.</p>
+            <div class="title" data-k="s2.i9.title">The pressure-building chapter</div>
+            <p data-k="s2.i9.plain">Probably the most important entry in this whole retrospective. Runs for over two years, right through early adolescence, and closes out literally days before Ketu Mahadasha began and the move to residential schooling followed. Read plainly: this stretch looks like the run-up to the crisis point, not a separate or unrelated one.</p>
           </div>
           <div class="tl-basis">
-            <span class="lbl">Chart basis</span>
-            <ul><li>Mercury MD / Saturn AD. Saturn sits directly on his own Ascendant, retrograde, ruling his most-loaded house — the same planet that defines his entire temperament, running as antardasha lord through this whole window.</li></ul>
+            <span class="lbl" data-k="lbl.basis">Chart basis</span>
+            <ul><li data-k="s2.i9.li1">Mercury MD / Saturn AD. Saturn sits directly on his own Ascendant, retrograde, ruling his most-loaded house — the same planet that defines his entire temperament, running as antardasha lord through this whole window.</li></ul>
           </div>
         </div>
       </div>
@@ -387,8 +402,8 @@
 
   <!-- ============ TIMELINE ============ -->
   <section>
-    <h2>Now through 2031</h2>
-    <p class="deck">His current Mahadasha (Ketu), broken into its antardashas. Each window: what to expect, then — separated — the chart reasoning behind the call.</p>
+    <h2 data-k="s3.h2">Now through 2031</h2>
+    <p class="deck" data-k="s3.deck">His current Mahadasha (Ketu), broken into its antardashas. Each window: what to expect, then — separated — the chart reasoning behind the call.</p>
 
     <div class="timeline">
 
@@ -396,18 +411,18 @@
         <div class="tl-card">
           <div class="tl-head">
             <span class="tl-dates">14 Mar 2026 – 13 Oct 2026</span>
-            <div class="tl-tags"><span class="pill steady">Steady</span><span class="pill who">Son</span></div>
+            <div class="tl-tags"><span class="pill steady" data-k="pill.steady">Steady</span><span class="pill who" data-k="pill.who.son">Son</span></div>
           </div>
           <div class="tl-plain">
-            <div class="title">Settling into the current rhythm</div>
-            <p>This stretch is more about mood and sensitivity than sharp aggression — days may swing with how much sensory or emotional input he's taking in, but this isn't expected to be the hardest window ahead. Worth using this time to notice exactly what overwhelms him, since that pattern matters more once the next window opens.</p>
+            <div class="title" data-k="s3.j1.title">Settling into the current rhythm</div>
+            <p data-k="s3.j1.plain">This stretch is more about mood and sensitivity than sharp aggression — days may swing with how much sensory or emotional input he's taking in, but this isn't expected to be the hardest window ahead. Worth using this time to notice exactly what overwhelms him, since that pattern matters more once the next window opens.</p>
           </div>
           <div class="tl-basis">
-            <span class="lbl">Chart basis</span>
+            <span class="lbl" data-k="lbl.basis">Chart basis</span>
             <ul>
-              <li>Ketu Mahadasha (10 Apr 2024 – 10 Apr 2031), Moon Antardasha (14 Mar – 13 Oct 2026)</li>
-              <li>Moon sits in Pisces — the antardasha lord's own sensitivity is amplified, not dampened</li>
-              <li>Ketu (Mahadasha lord) is scattered/unpredictable by nature, but not itself the aggression-linked planet</li>
+              <li data-k="s3.j1.li1">Ketu Mahadasha (10 Apr 2024 – 10 Apr 2031), Moon Antardasha (14 Mar – 13 Oct 2026)</li>
+              <li data-k="s3.j1.li2">Moon sits in Pisces — the antardasha lord's own sensitivity is amplified, not dampened</li>
+              <li data-k="s3.j1.li3">Ketu (Mahadasha lord) is scattered/unpredictable by nature, but not itself the aggression-linked planet</li>
             </ul>
           </div>
         </div>
@@ -417,18 +432,18 @@
         <div class="tl-card">
           <div class="tl-head">
             <span class="tl-dates">13 Oct 2026 – 11 Mar 2027</span>
-            <div class="tl-tags"><span class="pill caution">Caution</span><span class="pill who">Father &amp; Son</span></div>
+            <div class="tl-tags"><span class="pill caution" data-k="pill.caution">Caution</span><span class="pill who" data-k="pill.who.fatherson">Father &amp; Son</span></div>
           </div>
           <div class="tl-plain">
-            <div class="title">The window to prepare for</div>
-            <p>The single most-flagged stretch on this whole timeline. Worth having extra structure, advance notice of any change, and additional support at school and at home in place <em>before</em> it starts, not after. It also lands during a personally demanding stretch for the father — worth him lining up his own support too, so he isn't running on empty exactly when he's needed most.</p>
+            <div class="title" data-k="s3.j2.title">The window to prepare for</div>
+            <p data-k="s3.j2.plain">The single most-flagged stretch on this whole timeline. Worth having extra structure, advance notice of any change, and additional support at school and at home in place <em>before</em> it starts, not after. It also lands during a personally demanding stretch for the father — worth him lining up his own support too, so he isn't running on empty exactly when he's needed most.</p>
           </div>
           <div class="tl-basis">
-            <span class="lbl">Chart basis</span>
+            <span class="lbl" data-k="lbl.basis">Chart basis</span>
             <ul>
-              <li>Son: Ketu MD / Mars Antardasha (13 Oct 2026 – 11 Mar 2027) — his single most difficult placement, directly activated</li>
-              <li>His Mars also casts its 8th-house special aspect onto his own 6th-house stellium, and its 7th-house aspect onto his Lagna lord in the 5th</li>
-              <li>Father: Mercury MD / Ketu Antardasha (21 Feb 2026 – 18 Feb 2027), overlapping almost the whole window — father's natal Ketu sits in his own 8th house, a personally demanding sub-period independent of his son</li>
+              <li data-k="s3.j2.li1">Son: Ketu MD / Mars Antardasha (13 Oct 2026 – 11 Mar 2027) — his single most difficult placement, directly activated</li>
+              <li data-k="s3.j2.li2">His Mars also casts its 8th-house special aspect onto his own 6th-house stellium, and its 7th-house aspect onto his Lagna lord in the 5th</li>
+              <li data-k="s3.j2.li3">Father: Mercury MD / Ketu Antardasha (21 Feb 2026 – 18 Feb 2027), overlapping almost the whole window — father's natal Ketu sits in his own 8th house, a personally demanding sub-period independent of his son</li>
             </ul>
           </div>
         </div>
@@ -438,17 +453,17 @@
         <div class="tl-card">
           <div class="tl-head">
             <span class="tl-dates">11 Mar 2027 – 29 Mar 2028</span>
-            <div class="tl-tags"><span class="pill opportunity">Opportunity</span><span class="pill who">Son</span></div>
+            <div class="tl-tags"><span class="pill opportunity" data-k="pill.opportunity">Opportunity</span><span class="pill who" data-k="pill.who.son">Son</span></div>
           </div>
           <div class="tl-plain">
-            <div class="title">A window suited to trying a change</div>
-            <p>If a step like a more skills- or vocation-focused program has been on the table, this is the most chart-consistent window in the next few years to raise it. Change itself tends to move more easily now than in most other stretches.</p>
+            <div class="title" data-k="s3.j3.title">A window suited to trying a change</div>
+            <p data-k="s3.j3.plain">If a step like a more skills- or vocation-focused program has been on the table, this is the most chart-consistent window in the next few years to raise it. Change itself tends to move more easily now than in most other stretches.</p>
           </div>
           <div class="tl-basis">
-            <span class="lbl">Chart basis</span>
+            <span class="lbl" data-k="lbl.basis">Chart basis</span>
             <ul>
-              <li>Ketu MD / Rahu Antardasha (11 Mar 2027 – 29 Mar 2028) — Rahu is the classical significator of change; its antardasha is where new arrangements are more likely to take hold</li>
-              <li>Overlaps father's steadier Mercury MD / Venus Antardasha (18 Feb 2027 – 19 Dec 2029) — more personal steadiness available to support a transition</li>
+              <li data-k="s3.j3.li1">Ketu MD / Rahu Antardasha (11 Mar 2027 – 29 Mar 2028) — Rahu is the classical significator of change; its antardasha is where new arrangements are more likely to take hold</li>
+              <li data-k="s3.j3.li2">Overlaps father's steadier Mercury MD / Venus Antardasha (18 Feb 2027 – 19 Dec 2029) — more personal steadiness available to support a transition</li>
             </ul>
           </div>
         </div>
@@ -458,16 +473,16 @@
         <div class="tl-card">
           <div class="tl-head">
             <span class="tl-dates">29 Mar 2028 – 5 Mar 2029</span>
-            <div class="tl-tags"><span class="pill opportunity">Opportunity</span><span class="pill who">Son</span></div>
+            <div class="tl-tags"><span class="pill opportunity" data-k="pill.opportunity">Opportunity</span><span class="pill who" data-k="pill.who.son">Son</span></div>
           </div>
           <div class="tl-plain">
-            <div class="title">A gentler, more hopeful stretch</div>
-            <p>A somewhat easier emotional tone than the year before — a good window to consolidate whatever changed in the last period and let it settle in.</p>
+            <div class="title" data-k="s3.j4.title">A gentler, more hopeful stretch</div>
+            <p data-k="s3.j4.plain">A somewhat easier emotional tone than the year before — a good window to consolidate whatever changed in the last period and let it settle in.</p>
           </div>
           <div class="tl-basis">
-            <span class="lbl">Chart basis</span>
+            <span class="lbl" data-k="lbl.basis">Chart basis</span>
             <ul>
-              <li>Ketu MD / Jupiter Antardasha (29 Mar 2028 – 5 Mar 2029) — Jupiter, though weak elsewhere in this chart, remains a natural benefic; its antardasha tends to read more expansive relative to its neighbors</li>
+              <li data-k="s3.j4.li1">Ketu MD / Jupiter Antardasha (29 Mar 2028 – 5 Mar 2029) — Jupiter, though weak elsewhere in this chart, remains a natural benefic; its antardasha tends to read more expansive relative to its neighbors</li>
             </ul>
           </div>
         </div>
@@ -477,16 +492,16 @@
         <div class="tl-card">
           <div class="tl-head">
             <span class="tl-dates">5 Mar 2029 – 14 Apr 2030</span>
-            <div class="tl-tags"><span class="pill steady">Steady</span><span class="pill who">Son</span></div>
+            <div class="tl-tags"><span class="pill steady" data-k="pill.steady">Steady</span><span class="pill who" data-k="pill.who.son">Son</span></div>
           </div>
           <div class="tl-plain">
-            <div class="title">Building the routine that lasts</div>
-            <p>A good stretch for reinforcing whatever structure and daily rhythm has worked so far — thematically his best-aligned period for routine to actually stick.</p>
+            <div class="title" data-k="s3.j5.title">Building the routine that lasts</div>
+            <p data-k="s3.j5.plain">A good stretch for reinforcing whatever structure and daily rhythm has worked so far — thematically his best-aligned period for routine to actually stick.</p>
           </div>
           <div class="tl-basis">
-            <span class="lbl">Chart basis</span>
+            <span class="lbl" data-k="lbl.basis">Chart basis</span>
             <ul>
-              <li>Ketu MD / Saturn Antardasha (5 Mar 2029 – 14 Apr 2030) — Saturn sits on his own Ascendant and rules his 6th house; its antardasha activates the very planet his stability runs through</li>
+              <li data-k="s3.j5.li1">Ketu MD / Saturn Antardasha (5 Mar 2029 – 14 Apr 2030) — Saturn sits on his own Ascendant and rules his 6th house; its antardasha activates the very planet his stability runs through</li>
             </ul>
           </div>
         </div>
@@ -496,17 +511,17 @@
         <div class="tl-card">
           <div class="tl-head">
             <span class="tl-dates">14 Apr 2030 – 11 Apr 2031</span>
-            <div class="tl-tags"><span class="pill opportunity">Opportunity</span><span class="pill who">Father &amp; Son</span></div>
+            <div class="tl-tags"><span class="pill opportunity" data-k="pill.opportunity">Opportunity</span><span class="pill who" data-k="pill.who.fatherson">Father &amp; Son</span></div>
           </div>
           <div class="tl-plain">
-            <div class="title">His strongest stretch in years</div>
-            <p>This closing chapter lines up with his single strongest placement — worth watching for real, visible growth in communication and self-management. The father is also likely especially present and emotionally attuned during this same window.</p>
+            <div class="title" data-k="s3.j6.title">His strongest stretch in years</div>
+            <p data-k="s3.j6.plain">This closing chapter lines up with his single strongest placement — worth watching for real, visible growth in communication and self-management. The father is also likely especially present and emotionally attuned during this same window.</p>
           </div>
           <div class="tl-basis">
-            <span class="lbl">Chart basis</span>
+            <span class="lbl" data-k="lbl.basis">Chart basis</span>
             <ul>
-              <li>Son: Ketu MD / Mercury Antardasha (14 Apr 2030 – 11 Apr 2031) — Mercury is his Lagna lord, own-sign on his D9 Ascendant, his most dignified placement across both charts</li>
-              <li>Father: Mercury MD / Moon Antardasha (25 Oct 2030 – 25 Mar 2032) — Moon is his Amatyakaraka, generally an emotionally engaged, communicative sub-period</li>
+              <li data-k="s3.j6.li1">Son: Ketu MD / Mercury Antardasha (14 Apr 2030 – 11 Apr 2031) — Mercury is his Lagna lord, own-sign on his D9 Ascendant, his most dignified placement across both charts</li>
+              <li data-k="s3.j6.li2">Father: Mercury MD / Moon Antardasha (25 Oct 2030 – 25 Mar 2032) — Moon is his Amatyakaraka, generally an emotionally engaged, communicative sub-period</li>
             </ul>
           </div>
         </div>
@@ -515,18 +530,18 @@
       <div class="tl-item opportunity">
         <div class="tl-card">
           <div class="tl-head">
-            <span class="tl-dates">10 Apr 2031 — milestone</span>
-            <div class="tl-tags"><span class="pill opportunity">Opportunity</span><span class="pill who">Son</span></div>
+            <span class="tl-dates">10 Apr 2031 — <span data-k="s3.j7.dates">milestone</span></span>
+            <div class="tl-tags"><span class="pill opportunity" data-k="pill.opportunity">Opportunity</span><span class="pill who" data-k="pill.who.son">Son</span></div>
           </div>
           <div class="tl-plain">
-            <div class="title">A new twenty-year chapter opens</div>
-            <p>His Ketu Mahadasha — the period that's shaped this whole chapter of his life — ends, and Venus Mahadasha begins, running two decades. Structurally, this is the most promising long stretch visible in his chart: nothing in it points to the kind of disruption Ketu brought. Ease isn't automatic, though — it responds well to a genuinely warm, comfortable, supportive environment, worth actively building rather than assuming it arrives on its own.</p>
+            <div class="title" data-k="s3.j7.title">A new twenty-year chapter opens</div>
+            <p data-k="s3.j7.plain">His Ketu Mahadasha — the period that's shaped this whole chapter of his life — ends, and Venus Mahadasha begins, running two decades. Structurally, this is the most promising long stretch visible in his chart: nothing in it points to the kind of disruption Ketu brought. Ease isn't automatic, though — it responds well to a genuinely warm, comfortable, supportive environment, worth actively building rather than assuming it arrives on its own.</p>
           </div>
           <div class="tl-basis">
-            <span class="lbl">Chart basis</span>
+            <span class="lbl" data-k="lbl.basis">Chart basis</span>
             <ul>
-              <li>Ketu MD (2024–2031) ends; Venus MD (2031–2051) begins. Venus rules no difficult house in his D1, unlike Ketu's tie to his 10th house</li>
-              <li>Venus is combust in both his D1 and D9 — genuinely favorable overall, but needs supportive conditions rather than arriving effortlessly</li>
+              <li data-k="s3.j7.li1">Ketu MD (2024–2031) ends; Venus MD (2031–2051) begins. Venus rules no difficult house in his D1, unlike Ketu's tie to his 10th house</li>
+              <li data-k="s3.j7.li2">Venus is combust in both his D1 and D9 — genuinely favorable overall, but needs supportive conditions rather than arriving effortlessly</li>
             </ul>
           </div>
         </div>
@@ -537,8 +552,8 @@
 
   <!-- ============ VENUS MAHADASHA, FULL ============ -->
   <section>
-    <h2>The next twenty years — Venus Mahadasha (2031–2051)</h2>
-    <p class="deck">Broken into its own sub-periods, same format. His most promising long chapter overall, with two sub-periods still worth real preparation.</p>
+    <h2 data-k="s4.h2">The next twenty years — Venus Mahadasha (2031–2051)</h2>
+    <p class="deck" data-k="s4.deck">Broken into its own sub-periods, same format. His most promising long chapter overall, with two sub-periods still worth real preparation.</p>
 
     <div class="timeline">
 
@@ -546,17 +561,17 @@
         <div class="tl-card">
           <div class="tl-head">
             <span class="tl-dates">10 Apr 2031 – 10 Aug 2034</span>
-            <div class="tl-tags"><span class="pill opportunity">Opportunity</span><span class="pill who">Son</span></div>
+            <div class="tl-tags"><span class="pill opportunity" data-k="pill.opportunity">Opportunity</span><span class="pill who" data-k="pill.who.son">Son</span></div>
           </div>
           <div class="tl-plain">
-            <div class="title">Venus speaking for itself</div>
-            <p>The opening chapter of the new Mahadasha, with Venus itself as antardasha lord — likely the clearest, most direct expression of this period's better nature: social ease, comfort, a generally smoother emotional climate than anything in the previous seven years. A good foundation-setting stretch, though not itself the sharpest indicator for any single achievement.</p>
+            <div class="title" data-k="s4.k1.title">Venus speaking for itself</div>
+            <p data-k="s4.k1.plain">The opening chapter of the new Mahadasha, with Venus itself as antardasha lord — likely the clearest, most direct expression of this period's better nature: social ease, comfort, a generally smoother emotional climate than anything in the previous seven years. A good foundation-setting stretch, though not itself the sharpest indicator for any single achievement.</p>
           </div>
           <div class="tl-basis">
-            <span class="lbl">Chart basis</span>
+            <span class="lbl" data-k="lbl.basis">Chart basis</span>
             <ul>
-              <li>Venus MD / Venus AD (10 Apr 2031 – 10 Aug 2034)</li>
-              <li>Venus governs his 2nd house (speech/expression) and 9th house (higher learning, mentors) in D1 — both comfortable, trikona-adjacent significations</li>
+              <li data-k="s4.k1.li1">Venus MD / Venus AD (10 Apr 2031 – 10 Aug 2034)</li>
+              <li data-k="s4.k1.li2">Venus governs his 2nd house (speech/expression) and 9th house (higher learning, mentors) in D1 — both comfortable, trikona-adjacent significations</li>
             </ul>
           </div>
         </div>
@@ -566,17 +581,17 @@
         <div class="tl-card">
           <div class="tl-head">
             <span class="tl-dates">10 Aug 2034 – 10 Aug 2035</span>
-            <div class="tl-tags"><span class="pill caution">Caution</span><span class="pill who">Son</span></div>
+            <div class="tl-tags"><span class="pill caution" data-k="pill.caution">Caution</span><span class="pill who" data-k="pill.who.son">Son</span></div>
           </div>
           <div class="tl-plain">
-            <div class="title">A brief institutional echo</div>
-            <p>A short, roughly year-long stretch that may bring administrative, institutional, or placement-related friction — a review, a transition point, something bureaucratic needing attention. Not expected to be severe, and it passes quickly.</p>
+            <div class="title" data-k="s4.k2.title">A brief institutional echo</div>
+            <p data-k="s4.k2.plain">A short, roughly year-long stretch that may bring administrative, institutional, or placement-related friction — a review, a transition point, something bureaucratic needing attention. Not expected to be severe, and it passes quickly.</p>
           </div>
           <div class="tl-basis">
-            <span class="lbl">Chart basis</span>
+            <span class="lbl" data-k="lbl.basis">Chart basis</span>
             <ul>
-              <li>Venus MD / Sun Antardasha (10 Aug 2034 – 10 Aug 2035)</li>
-              <li>Sun rules his 12th house (institutions, retreat, loss) and sits in his 6th house in enemy dignity — a brief return of the 6th-house theme via a different lord</li>
+              <li data-k="s4.k2.li1">Venus MD / Sun Antardasha (10 Aug 2034 – 10 Aug 2035)</li>
+              <li data-k="s4.k2.li2">Sun rules his 12th house (institutions, retreat, loss) and sits in his 6th house in enemy dignity — a brief return of the 6th-house theme via a different lord</li>
             </ul>
           </div>
         </div>
@@ -586,17 +601,17 @@
         <div class="tl-card">
           <div class="tl-head">
             <span class="tl-dates">10 Aug 2035 – 11 Apr 2037</span>
-            <div class="tl-tags"><span class="pill opportunity">Opportunity</span><span class="pill who">Son</span></div>
+            <div class="tl-tags"><span class="pill opportunity" data-k="pill.opportunity">Opportunity</span><span class="pill who" data-k="pill.who.son">Son</span></div>
           </div>
           <div class="tl-plain">
-            <div class="title">Community and connection build</div>
-            <p>A supportive stretch for widening his circle — peer relationships, a sense of belonging to a group or community, possibly meaningful friendships forming.</p>
+            <div class="title" data-k="s4.k3.title">Community and connection build</div>
+            <p data-k="s4.k3.plain">A supportive stretch for widening his circle — peer relationships, a sense of belonging to a group or community, possibly meaningful friendships forming.</p>
           </div>
           <div class="tl-basis">
-            <span class="lbl">Chart basis</span>
+            <span class="lbl" data-k="lbl.basis">Chart basis</span>
             <ul>
-              <li>Venus MD / Moon Antardasha (10 Aug 2035 – 11 Apr 2037)</li>
-              <li>Moon rules his 11th house of peer group and community, and sits in Friend dignity in Pisces</li>
+              <li data-k="s4.k3.li1">Venus MD / Moon Antardasha (10 Aug 2035 – 11 Apr 2037)</li>
+              <li data-k="s4.k3.li2">Moon rules his 11th house of peer group and community, and sits in Friend dignity in Pisces</li>
             </ul>
           </div>
         </div>
@@ -606,16 +621,16 @@
         <div class="tl-card">
           <div class="tl-head">
             <span class="tl-dates">11 Apr 2037 – 11 Jun 2038</span>
-            <div class="tl-tags"><span class="pill caution">Caution</span><span class="pill who">Son</span></div>
+            <div class="tl-tags"><span class="pill caution" data-k="pill.caution">Caution</span><span class="pill who" data-k="pill.who.son">Son</span></div>
           </div>
           <div class="tl-plain">
-            <div class="title">Mars returns</div>
-            <p>The same difficult signature as 2026–27, now roughly a decade later, in early adulthood. Worth planning around the same way — more structure, more patience, additional support lined up in advance rather than after.</p>
+            <div class="title" data-k="s4.k4.title">Mars returns</div>
+            <p data-k="s4.k4.plain">The same difficult signature as 2026–27, now roughly a decade later, in early adulthood. Worth planning around the same way — more structure, more patience, additional support lined up in advance rather than after.</p>
           </div>
           <div class="tl-basis">
-            <span class="lbl">Chart basis</span>
+            <span class="lbl" data-k="lbl.basis">Chart basis</span>
             <ul>
-              <li>Venus MD / Mars Antardasha (11 Apr 2037 – 11 Jun 2038) — his debilitated, retrograde Mars directly activated again, same mechanism as 2026–27</li>
+              <li data-k="s4.k4.li1">Venus MD / Mars Antardasha (11 Apr 2037 – 11 Jun 2038) — his debilitated, retrograde Mars directly activated again, same mechanism as 2026–27</li>
             </ul>
           </div>
         </div>
@@ -625,17 +640,17 @@
         <div class="tl-card">
           <div class="tl-head">
             <span class="tl-dates">11 Jun 2038 – 11 Jun 2041</span>
-            <div class="tl-tags"><span class="pill caution">Caution</span><span class="pill who">Son</span></div>
+            <div class="tl-tags"><span class="pill caution" data-k="pill.caution">Caution</span><span class="pill who" data-k="pill.who.son">Son</span></div>
           </div>
           <div class="tl-plain">
-            <div class="title">Unsettled ground at home</div>
-            <p>A long, three-year stretch where domestic circumstances or living arrangements may shift or feel less settled than usual — not necessarily negative, but change-prone. Worth watching rather than resisting.</p>
+            <div class="title" data-k="s4.k5.title">Unsettled ground at home</div>
+            <p data-k="s4.k5.plain">A long, three-year stretch where domestic circumstances or living arrangements may shift or feel less settled than usual — not necessarily negative, but change-prone. Worth watching rather than resisting.</p>
           </div>
           <div class="tl-basis">
-            <span class="lbl">Chart basis</span>
+            <span class="lbl" data-k="lbl.basis">Chart basis</span>
             <ul>
-              <li>Venus MD / Rahu Antardasha (11 Jun 2038 – 11 Jun 2041)</li>
-              <li>Rahu sits in his 4th house of home and inner foundation — its antardasha tends to bring restructuring to exactly that domain</li>
+              <li data-k="s4.k5.li1">Venus MD / Rahu Antardasha (11 Jun 2038 – 11 Jun 2041)</li>
+              <li data-k="s4.k5.li2">Rahu sits in his 4th house of home and inner foundation — its antardasha tends to bring restructuring to exactly that domain</li>
             </ul>
           </div>
         </div>
@@ -645,17 +660,17 @@
         <div class="tl-card">
           <div class="tl-head">
             <span class="tl-dates">11 Jun 2041 – 9 Feb 2044</span>
-            <div class="tl-tags"><span class="pill opportunity">Opportunity</span><span class="pill who">Son</span></div>
+            <div class="tl-tags"><span class="pill opportunity" data-k="pill.opportunity">Opportunity</span><span class="pill who" data-k="pill.who.son">Son</span></div>
           </div>
           <div class="tl-plain">
-            <div class="title">Expansion, relationship, deepening</div>
-            <p>A genuinely hopeful multi-year stretch — growth in relationships, a deepening sense of home stability, and a more expansive, optimistic outlook than usual.</p>
+            <div class="title" data-k="s4.k6.title">Expansion, relationship, deepening</div>
+            <p data-k="s4.k6.plain">A genuinely hopeful multi-year stretch — growth in relationships, a deepening sense of home stability, and a more expansive, optimistic outlook than usual.</p>
           </div>
           <div class="tl-basis">
-            <span class="lbl">Chart basis</span>
+            <span class="lbl" data-k="lbl.basis">Chart basis</span>
             <ul>
-              <li>Venus MD / Jupiter Antardasha (11 Jun 2041 – 9 Feb 2044)</li>
-              <li>Jupiter rules his 4th house (home) and 7th house (partnership); though combust, it remains a natural benefic and this antardasha tends to soften that strain</li>
+              <li data-k="s4.k6.li1">Venus MD / Jupiter Antardasha (11 Jun 2041 – 9 Feb 2044)</li>
+              <li data-k="s4.k6.li2">Jupiter rules his 4th house (home) and 7th house (partnership); though combust, it remains a natural benefic and this antardasha tends to soften that strain</li>
             </ul>
           </div>
         </div>
@@ -665,17 +680,17 @@
         <div class="tl-card">
           <div class="tl-head">
             <span class="tl-dates">9 Feb 2044 – 11 Apr 2047</span>
-            <div class="tl-tags"><span class="pill opportunity">Opportunity</span><span class="pill who">Son</span></div>
+            <div class="tl-tags"><span class="pill opportunity" data-k="pill.opportunity">Opportunity</span><span class="pill who" data-k="pill.who.son">Son</span></div>
           </div>
           <div class="tl-plain">
-            <div class="title">Where a working life matures</div>
-            <p>By the chart's own logic, this is the strongest candidate anywhere in his dasha sequence for a structured, service- or skill-based working routine to genuinely mature and hold — not just be maintained, but flourish.</p>
+            <div class="title" data-k="s4.k7.title">Where a working life matures</div>
+            <p data-k="s4.k7.plain">By the chart's own logic, this is the strongest candidate anywhere in his dasha sequence for a structured, service- or skill-based working routine to genuinely mature and hold — not just be maintained, but flourish.</p>
           </div>
           <div class="tl-basis">
-            <span class="lbl">Chart basis</span>
+            <span class="lbl" data-k="lbl.basis">Chart basis</span>
             <ul>
-              <li>Venus MD / Saturn Antardasha (9 Feb 2044 – 11 Apr 2047)</li>
-              <li>Saturn sits on his Ascendant and rules his 6th house of service and daily work — its antardasha activates that architecture directly</li>
+              <li data-k="s4.k7.li1">Venus MD / Saturn Antardasha (9 Feb 2044 – 11 Apr 2047)</li>
+              <li data-k="s4.k7.li2">Saturn sits on his Ascendant and rules his 6th house of service and daily work — its antardasha activates that architecture directly</li>
             </ul>
           </div>
         </div>
@@ -685,17 +700,17 @@
         <div class="tl-card">
           <div class="tl-head">
             <span class="tl-dates">11 Apr 2047 – 9 Feb 2050</span>
-            <div class="tl-tags"><span class="pill opportunity">Opportunity</span><span class="pill who">Son</span></div>
+            <div class="tl-tags"><span class="pill opportunity" data-k="pill.opportunity">Opportunity</span><span class="pill who" data-k="pill.who.son">Son</span></div>
           </div>
           <div class="tl-plain">
-            <div class="title">His best window for recognition</div>
-            <p>His most dignified placement in the entire chart, running as antardasha lord for nearly three years — a strong candidate for real, visible competence and confidence in a structured role.</p>
+            <div class="title" data-k="s4.k8.title">His best window for recognition</div>
+            <p data-k="s4.k8.plain">His most dignified placement in the entire chart, running as antardasha lord for nearly three years — a strong candidate for real, visible competence and confidence in a structured role.</p>
           </div>
           <div class="tl-basis">
-            <span class="lbl">Chart basis</span>
+            <span class="lbl" data-k="lbl.basis">Chart basis</span>
             <ul>
-              <li>Venus MD / Mercury Antardasha (11 Apr 2047 – 9 Feb 2050)</li>
-              <li>Mercury is his Lagna lord, own-sign in D9, and rules his 10th house of occupation in D1</li>
+              <li data-k="s4.k8.li1">Venus MD / Mercury Antardasha (11 Apr 2047 – 9 Feb 2050)</li>
+              <li data-k="s4.k8.li2">Mercury is his Lagna lord, own-sign in D9, and rules his 10th house of occupation in D1</li>
             </ul>
           </div>
         </div>
@@ -705,16 +720,16 @@
         <div class="tl-card">
           <div class="tl-head">
             <span class="tl-dates">9 Feb 2050 – 11 Apr 2051</span>
-            <div class="tl-tags"><span class="pill steady">Steady</span><span class="pill who">Son</span></div>
+            <div class="tl-tags"><span class="pill steady" data-k="pill.steady">Steady</span><span class="pill who" data-k="pill.who.son">Son</span></div>
           </div>
           <div class="tl-plain">
-            <div class="title">A short, closing stretch</div>
-            <p>A brief final sub-period closing out the Venus Mahadasha — a natural pause point rather than a major event window.</p>
+            <div class="title" data-k="s4.k9.title">A short, closing stretch</div>
+            <p data-k="s4.k9.plain">A brief final sub-period closing out the Venus Mahadasha — a natural pause point rather than a major event window.</p>
           </div>
           <div class="tl-basis">
-            <span class="lbl">Chart basis</span>
+            <span class="lbl" data-k="lbl.basis">Chart basis</span>
             <ul>
-              <li>Venus MD / Ketu Antardasha (9 Feb 2050 – 11 Apr 2051)</li>
+              <li data-k="s4.k9.li1">Venus MD / Ketu Antardasha (9 Feb 2050 – 11 Apr 2051)</li>
             </ul>
           </div>
         </div>
@@ -725,25 +740,25 @@
 
   <!-- ============ BEYOND 2051 ============ -->
   <section>
-    <h2>Beyond 2051 — long-arc markers</h2>
-    <p class="deck">Mahadasha-level only, no antardasha breakdown — too far out for that resolution to mean much. Included for completeness, not for planning against.</p>
+    <h2 data-k="s5.h2">Beyond 2051 — long-arc markers</h2>
+    <p class="deck" data-k="s5.deck">Mahadasha-level only, no antardasha breakdown — too far out for that resolution to mean much. Included for completeness, not for planning against.</p>
 
     <div class="timeline">
 
       <div class="tl-item caution">
         <div class="tl-card">
           <div class="tl-head">
-            <span class="tl-dates">2051 – 2057 · age 41–47</span>
-            <div class="tl-tags"><span class="pill caution">Caution</span><span class="pill who">Son</span></div>
+            <span class="tl-dates">2051 – 2057 · <span data-k="s5.l1.dates">age 41–47</span></span>
+            <div class="tl-tags"><span class="pill caution" data-k="pill.caution">Caution</span><span class="pill who" data-k="pill.who.son">Son</span></div>
           </div>
           <div class="tl-plain">
-            <div class="title">A withdrawing, administrative chapter</div>
-            <p>A six-year period that may bring themes of retreat, institutional or administrative matters, or renewed attention to health and daily-functioning routines.</p>
+            <div class="title" data-k="s5.l1.title">A withdrawing, administrative chapter</div>
+            <p data-k="s5.l1.plain">A six-year period that may bring themes of retreat, institutional or administrative matters, or renewed attention to health and daily-functioning routines.</p>
           </div>
           <div class="tl-basis">
-            <span class="lbl">Chart basis</span>
+            <span class="lbl" data-k="lbl.basis">Chart basis</span>
             <ul>
-              <li>Sun Mahadasha (2051–2057). Sun rules his 12th house and sits in his 6th house in enemy dignity — a moderately difficult Mahadasha by house rulership and placement</li>
+              <li data-k="s5.l1.li1">Sun Mahadasha (2051–2057). Sun rules his 12th house and sits in his 6th house in enemy dignity — a moderately difficult Mahadasha by house rulership and placement</li>
             </ul>
           </div>
         </div>
@@ -752,17 +767,17 @@
       <div class="tl-item opportunity">
         <div class="tl-card">
           <div class="tl-head">
-            <span class="tl-dates">2057 – 2067 · age 47–57</span>
-            <div class="tl-tags"><span class="pill opportunity">Opportunity</span><span class="pill who">Son</span></div>
+            <span class="tl-dates">2057 – 2067 · <span data-k="s5.l2.dates">age 47–57</span></span>
+            <div class="tl-tags"><span class="pill opportunity" data-k="pill.opportunity">Opportunity</span><span class="pill who" data-k="pill.who.son">Son</span></div>
           </div>
           <div class="tl-plain">
-            <div class="title">A socially rich decade</div>
-            <p>Likely one of the more supportive, well-connected decades in his adult life — community, friendship, and a sense of gain through relationships.</p>
+            <div class="title" data-k="s5.l2.title">A socially rich decade</div>
+            <p data-k="s5.l2.plain">Likely one of the more supportive, well-connected decades in his adult life — community, friendship, and a sense of gain through relationships.</p>
           </div>
           <div class="tl-basis">
-            <span class="lbl">Chart basis</span>
+            <span class="lbl" data-k="lbl.basis">Chart basis</span>
             <ul>
-              <li>Moon Mahadasha (2057–2067). Moon rules his 11th house of gains and community, and sits in Friend dignity in Pisces</li>
+              <li data-k="s5.l2.li1">Moon Mahadasha (2057–2067). Moon rules his 11th house of gains and community, and sits in Friend dignity in Pisces</li>
             </ul>
           </div>
         </div>
@@ -771,17 +786,17 @@
       <div class="tl-item caution">
         <div class="tl-card">
           <div class="tl-head">
-            <span class="tl-dates">2067 – 2074 · age 57–64</span>
-            <div class="tl-tags"><span class="pill caution">Caution</span><span class="pill who">Son</span></div>
+            <span class="tl-dates">2067 – 2074 · <span data-k="s5.l3.dates">age 57–64</span></span>
+            <div class="tl-tags"><span class="pill caution" data-k="pill.caution">Caution</span><span class="pill who" data-k="pill.who.son">Son</span></div>
           </div>
           <div class="tl-plain">
-            <div class="title">Mars, at Mahadasha scale</div>
-            <p>His most difficult planet now runs the whole period, not just a sub-period — worth taking seriously as a stretch needing real structure and support, likely expressing more through health and vitality than behavior at this life stage.</p>
+            <div class="title" data-k="s5.l3.title">Mars, at Mahadasha scale</div>
+            <p data-k="s5.l3.plain">His most difficult planet now runs the whole period, not just a sub-period — worth taking seriously as a stretch needing real structure and support, likely expressing more through health and vitality than behavior at this life stage.</p>
           </div>
           <div class="tl-basis">
-            <span class="lbl">Chart basis</span>
+            <span class="lbl" data-k="lbl.basis">Chart basis</span>
             <ul>
-              <li>Mars Mahadasha (2067–2074). Mars remains debilitated and retrograde in his D1 — the same core signature, now at Mahadasha scale</li>
+              <li data-k="s5.l3.li1">Mars Mahadasha (2067–2074). Mars remains debilitated and retrograde in his D1 — the same core signature, now at Mahadasha scale</li>
             </ul>
           </div>
         </div>
@@ -790,17 +805,17 @@
       <div class="tl-item caution">
         <div class="tl-card">
           <div class="tl-head">
-            <span class="tl-dates">2074 – 2092 · age 64–82</span>
-            <div class="tl-tags"><span class="pill caution">Caution</span><span class="pill who">Son</span></div>
+            <span class="tl-dates">2074 – 2092 · <span data-k="s5.l4.dates">age 64–82</span></span>
+            <div class="tl-tags"><span class="pill caution" data-k="pill.caution">Caution</span><span class="pill who" data-k="pill.who.son">Son</span></div>
           </div>
           <div class="tl-plain">
-            <div class="title">A long, unsettled late-life stretch</div>
-            <p>An 18-year period touching home, inner peace, and possibly significant restructuring in later life. Too far out for specifics — recorded here so the shape exists on the record.</p>
+            <div class="title" data-k="s5.l4.title">A long, unsettled late-life stretch</div>
+            <p data-k="s5.l4.plain">An 18-year period touching home, inner peace, and possibly significant restructuring in later life. Too far out for specifics — recorded here so the shape exists on the record.</p>
           </div>
           <div class="tl-basis">
-            <span class="lbl">Chart basis</span>
+            <span class="lbl" data-k="lbl.basis">Chart basis</span>
             <ul>
-              <li>Rahu Mahadasha (2074–2092). Rahu sits in his 4th house of home and inner foundation — a long Mahadasha built on an already restless placement</li>
+              <li data-k="s5.l4.li1">Rahu Mahadasha (2074–2092). Rahu sits in his 4th house of home and inner foundation — a long Mahadasha built on an already restless placement</li>
             </ul>
           </div>
         </div>
@@ -809,17 +824,17 @@
       <div class="tl-item opportunity">
         <div class="tl-card">
           <div class="tl-head">
-            <span class="tl-dates">2092 – 2108 · age 82–98</span>
-            <div class="tl-tags"><span class="pill opportunity">Opportunity</span><span class="pill who">Son</span></div>
+            <span class="tl-dates">2092 – 2108 · <span data-k="s5.l5.dates">age 82–98</span></span>
+            <div class="tl-tags"><span class="pill opportunity" data-k="pill.opportunity">Opportunity</span><span class="pill who" data-k="pill.who.son">Son</span></div>
           </div>
           <div class="tl-plain">
-            <div class="title">A quieter, benefic close</div>
-            <p>Very far out to speak to with confidence, but structurally the gentlest of his remaining Mahadashas.</p>
+            <div class="title" data-k="s5.l5.title">A quieter, benefic close</div>
+            <p data-k="s5.l5.plain">Very far out to speak to with confidence, but structurally the gentlest of his remaining Mahadashas.</p>
           </div>
           <div class="tl-basis">
-            <span class="lbl">Chart basis</span>
+            <span class="lbl" data-k="lbl.basis">Chart basis</span>
             <ul>
-              <li>Jupiter Mahadasha (2092–2108). Jupiter is combust in his D1 but remains a natural benefic; no dusthana rulership involved</li>
+              <li data-k="s5.l5.li1">Jupiter Mahadasha (2092–2108). Jupiter is combust in his D1 but remains a natural benefic; no dusthana rulership involved</li>
             </ul>
           </div>
         </div>
@@ -828,17 +843,17 @@
       <div class="tl-item steady">
         <div class="tl-card">
           <div class="tl-head">
-            <span class="tl-dates">2108 – 2127 · age 98–117</span>
-            <div class="tl-tags"><span class="pill steady">Steady</span><span class="pill who">Son</span></div>
+            <span class="tl-dates">2108 – 2127 · <span data-k="s5.l6.dates">age 98–117</span></span>
+            <div class="tl-tags"><span class="pill steady" data-k="pill.steady">Steady</span><span class="pill who" data-k="pill.who.son">Son</span></div>
           </div>
           <div class="tl-plain">
-            <div class="title">Beyond a realistic planning horizon</div>
-            <p>Included only for completeness — this Mahadasha falls beyond any age this timeline can meaningfully speak to.</p>
+            <div class="title" data-k="s5.l6.title">Beyond a realistic planning horizon</div>
+            <p data-k="s5.l6.plain">Included only for completeness — this Mahadasha falls beyond any age this timeline can meaningfully speak to.</p>
           </div>
           <div class="tl-basis">
-            <span class="lbl">Chart basis</span>
+            <span class="lbl" data-k="lbl.basis">Chart basis</span>
             <ul>
-              <li>Saturn Mahadasha (2108–2127). Saturn rules his Ascendant and 6th house — thematically a "return to structure," not a practically actionable entry</li>
+              <li data-k="s5.l6.li1">Saturn Mahadasha (2108–2127). Saturn rules his Ascendant and 6th house — thematically a "return to structure," not a practically actionable entry</li>
             </ul>
           </div>
         </div>
@@ -849,50 +864,50 @@
 
   <!-- ============ SUPPORT IDEAS ============ -->
   <section>
-    <h2>Practical support ideas</h2>
-    <p class="deck">Worth trying alongside his school's own plan, not instead of it — and worth running past his care team before adopting.</p>
+    <h2 data-k="s6.h2">Practical support ideas</h2>
+    <p class="deck" data-k="s6.deck">Worth trying alongside his school's own plan, not instead of it — and worth running past his care team before adopting.</p>
 
     <div class="refcard">
       <div class="plain">
-        <div class="title">Rhythmic, structured physical outlets — same time, most days</div>
-        <p>Swimming, running, or cycling on a fixed daily or near-daily schedule. Water-based activity in particular is worth prioritizing over combative or highly competitive sport.</p>
+        <div class="title" data-k="s6.c1.title">Rhythmic, structured physical outlets — same time, most days</div>
+        <p data-k="s6.c1.plain">Swimming, running, or cycling on a fixed daily or near-daily schedule. Water-based activity in particular is worth prioritizing over combative or highly competitive sport.</p>
       </div>
       <div class="basis">
-        <span class="lbl">Chart basis</span>
-        <p>His Mars sits in Cancer, a water sign — his native fire is already uncomfortable there. Water-based activity reads as cooling and pacifying for a strained Mars; rhythm and repetition suit his retrograde Mars better than sudden or unpredictable outlets.</p>
+        <span class="lbl" data-k="lbl.basis">Chart basis</span>
+        <p data-k="s6.c1.basis">His Mars sits in Cancer, a water sign — his native fire is already uncomfortable there. Water-based activity reads as cooling and pacifying for a strained Mars; rhythm and repetition suit his retrograde Mars better than sudden or unpredictable outlets.</p>
       </div>
     </div>
 
     <div class="refcard">
       <div class="plain">
-        <div class="title">Hands-on, goal-directed tasks</div>
-        <p>Building, gardening, or craft work — physically engaging but structured and rule-bound, rather than open-ended or explosive.</p>
+        <div class="title" data-k="s6.c2.title">Hands-on, goal-directed tasks</div>
+        <p data-k="s6.c2.plain">Building, gardening, or craft work — physically engaging but structured and rule-bound, rather than open-ended or explosive.</p>
       </div>
       <div class="basis">
-        <span class="lbl">Chart basis</span>
-        <p>Same Mars signature — channels its energy through structure rather than raw release.</p>
+        <span class="lbl" data-k="lbl.basis">Chart basis</span>
+        <p data-k="s6.c2.basis">Same Mars signature — channels its energy through structure rather than raw release.</p>
       </div>
     </div>
 
     <div class="refcard">
       <div class="plain">
-        <div class="title">Tuesday practice — Hanuman</div>
-        <p>A simple weekly practice on Tuesdays, in whatever form fits the family.</p>
+        <div class="title" data-k="s6.c3.title">Tuesday practice — Hanuman</div>
+        <p data-k="s6.c3.plain">A simple weekly practice on Tuesdays, in whatever form fits the family.</p>
       </div>
       <div class="basis">
-        <span class="lbl">Chart basis</span>
-        <p>Hanuman is the classical deity most associated with pacifying a difficult Mars — and, in popular tradition, is also invoked for a difficult Saturn, which matters here since Saturn is equally central to his chart.</p>
+        <span class="lbl" data-k="lbl.basis">Chart basis</span>
+        <p data-k="s6.c3.basis">Hanuman is the classical deity most associated with pacifying a difficult Mars — and, in popular tradition, is also invoked for a difficult Saturn, which matters here since Saturn is equally central to his chart.</p>
       </div>
     </div>
 
     <div class="refcard">
       <div class="plain">
-        <div class="title">A steady, trusted mentor figure</div>
-        <p>Investing in one or two adults outside the immediate family who are patient, consistent, and stick around — a coach, a therapist, a teacher he connects with.</p>
+        <div class="title" data-k="s6.c4.title">A steady, trusted mentor figure</div>
+        <p data-k="s6.c4.plain">Investing in one or two adults outside the immediate family who are patient, consistent, and stick around — a coach, a therapist, a teacher he connects with.</p>
       </div>
       <div class="basis">
-        <span class="lbl">Chart basis</span>
-        <p>Jupiter — governing trust in guidance and teachers — is combust in both his D1 and D9, and debilitated in the D9. His least naturally-flowing planet; it responds well to being actively fed rather than left to develop alone.</p>
+        <span class="lbl" data-k="lbl.basis">Chart basis</span>
+        <p data-k="s6.c4.basis">Jupiter — governing trust in guidance and teachers — is combust in both his D1 and D9, and debilitated in the D9. His least naturally-flowing planet; it responds well to being actively fed rather than left to develop alone.</p>
       </div>
     </div>
   </section>
@@ -900,7 +915,239 @@
   <hr class="div">
 
   <div class="disclaimer">
-    <p>Your private, unabridged reference — drawn from classical Vedic astrological technique, for reflection and planning, not medical guidance. Not a substitute for the assessment or plan from his school and clinical team. Confidence naturally thins the further out a window sits; treat anything past the mid-2030s as a shape worth knowing about rather than a forecast worth acting on today. Worth revisiting as each window closes.</p>
+    <p data-k="disclaimer.p">Your private, unabridged reference — drawn from classical Vedic astrological technique, for reflection and planning, not medical guidance. Not a substitute for the assessment or plan from his school and clinical team. Confidence naturally thins the further out a window sits; treat anything past the mid-2030s as a shape worth knowing about rather than a forecast worth acting on today. Worth revisiting as each window closes.</p>
   </div>
 
 </div>
+
+<script>
+(function(){
+  var TA = {
+    "banner.tag": "செப் 2026 புதுப்பிப்பு · முழுமையானது",
+    "banner.p": "இது உங்களுக்கான முழுமையான பதிப்பு — எதுவும் மென்மையாக்கப்படவில்லை, எதுவும் மறைக்கப்படவில்லை. இது இப்போது அவரது முழு வாழ்க்கையையும் உள்ளடக்குகிறது: பிறப்பிலிருந்து அவரது முதல் மகாதசை, இப்போதைய கட்டம், முழு சுக்கிர மகாதசை (2051 வரை), அதற்குப் பிறகான ஒவ்வொரு மகாதசையும். குடும்பத்துடன் ஏற்கனவே பகிரப்பட்ட பதிப்பு சுருக்கப்பட்டது, அருகிய காலத்திற்கு மட்டுமே; இது உங்களுடையது.",
+    "mh.kicker": "தனிப்பட்ட குறிப்பு · மேலே எளிய வழிகாட்டுதல், கீழே ஜோதிட காரணம்",
+    "mh.h1": "நீண்ட கால முன்னறிவு",
+    "mh.sub": "ஒரே பொதுவான காலவரிசை, இரண்டு ஜாதகங்கள், முழு ஆழம். ஒவ்வொரு பகுதியும்: அது பொதுவாக எப்படி உணரப்படும் என்பது எளிய வார்த்தைகளில் — பின்னர், தனியாகப் பிரிக்கப்பட்டு, அது சார்ந்திருக்கும் ஜோதிட காரணம்.",
+    "whosin.kicker": "கவனத்தில்",
+    "whosin.son.name": "மகன்",
+    "whosin.son.charts": "D1 கன்னி லக்னம் · D9 மிதுன லக்னம் · பிறப்பு: பிப்ரவரி 2010",
+    "whosin.father.name": "தந்தை",
+    "whosin.father.charts": "D1 சிம்ம லக்னம் · D9 கன்னி லக்னம் · D7 தனுசு லக்னம்",
+    "legend.caution.t": "எச்சரிக்கை",
+    "legend.caution.d": "தயாராக வைத்திருக்க வேண்டிய கூடுதல் கட்டமைப்பு அல்லது ஆதரவு",
+    "legend.steady.t": "நிலையானது",
+    "legend.steady.d": "குறிப்பிட்ட எச்சரிக்கை எதுவும் இல்லை — இயங்கிக் கொண்டிருப்பதைத் தொடருங்கள்",
+    "legend.opp.t": "வாய்ப்பு",
+    "legend.opp.d": "முன்னேற்றத்திற்கும் நல்ல கட்டத்திற்கும் ஏற்ற தருணம்",
+    "pill.caution": "எச்சரிக்கை",
+    "pill.steady": "நிலையானது",
+    "pill.opportunity": "வாய்ப்பு",
+    "pill.who.son": "மகன்",
+    "pill.who.fatherson": "தந்தை & மகன்",
+    "lbl.basis": "ஜோதிட அடிப்படை",
+
+    "s1.h2": "அடிப்படை குணநலன் — ஒரு குறிப்பிட்ட காலத்திற்கு உட்பட்டதல்ல",
+    "s1.deck": "அவரது முழு ஜாதகத்திலும் உண்மையானது, ஒரு காலகட்டத்திற்கு மட்டுமல்ல. ஒருமுறை படித்து, அரிதாகவே மீண்டும் பாருங்கள்.",
+    "s1.c1.title": "கட்டமைப்பு அவருக்கு விருப்பமானதல்ல — அது மையமானது",
+    "s1.c1.plain": "கணிக்கக்கூடிய வழக்கங்களும் குறைந்த ஆச்சரியங்களுள்ள சூழலும் வெறும் நன்மையானவை மட்டுமல்ல; தினசரி அவர் எவ்வளவு நிலைத்தன்மையுடன் உணர்கிறார் என்பதற்கு அவை கிட்டத்தட்ட தாங்கிநிற்கும் தூண்கள். இது அவரது முழு வாழ்க்கையிலும் உண்மையானது, இப்போது மட்டுமல்ல — இதை அவர் வளர்ந்தவுடன் எளிதில் கடந்துவிடுவார் என்று சொல்ல முடியாது.",
+    "s1.c1.basis": "D1: மூன்று கிரகங்கள் (சூரியன், சுக்கிரன், குரு) அவரது 6-ஆம் வீட்டில் (வழக்கம், தினசரி செயல்பாடு) கூடியுள்ளன. D9: சூரியன் மீண்டும் 6-ஆம் வீட்டில் தோன்றுகிறார், இந்த முறை ராகுவுடன் — அதே கருப்பொருள் தனித்தனியாக மீண்டும் வருகிறது. அந்த சுமையான 6-ஆம் வீட்டை ஆளும் சனி, D1-ல் அவரது லக்னத்தின் மீதே அமர்ந்துள்ளார் — அவரது அடிப்படை அடையாளத்தை வரையறுக்கும் கிரகமே, அவரது மிகவும் சுமையான வீட்டை ஆளும் கிரகமும் ஆகும்.",
+    "s1.c2.title": "அவரது ஆற்றல் வழக்கமான முறையில் வெளியேறுவதில்லை",
+    "s1.c2.plain": "உறுதியும் உடல் ஆற்றலும் சிறு, நிலையான அளவுகளில் வெளியேறுவதற்குப் பதிலாக உள்ளுக்குள் குவிகின்றன — இது தருணத்திற்குத் தேவையானதை விட அதிக வலிமையுடன் வெளிப்படக்கூடும் என்று பொருள். இது ஒரு கடினமான காலகட்டத்தின் அறிகுறி மட்டுமல்ல, அவரது குணநலனின் நிலையான அம்சம்.",
+    "s1.c2.basis": "ஆற்றல், உந்துதல், முன்முயற்சி ஆகியவற்றை ஆளும் செவ்வாய், D1-ல் கடகத்தில் நீசமடைந்து வக்கிரமாக உள்ளார், D9-லும் மீண்டும் வக்கிரமாக உள்ளார். இரண்டு தனித்தனி ஜாதகங்களிலும் இந்த கிரகத்திற்கு தொடர்ந்து சவாலான அமைவு.",
+    "s1.c3.title": "உண்மையிலேயே மென்மையான, உள்வாங்கும் உள்ளுலகம்",
+    "s1.c3.plain": "அவரைச் சுற்றியுள்ளவர்களை விட, உணர்வுச் சூழலையும் புலனுணர்வு தூண்டுதல்களையும் அவர் அதிகமாக உள்வாங்கிக் கொள்கிறார், அதிக தூண்டுதலுக்குப் பிறகு மீண்டும் தன்னிலைக்கு வர உண்மையான அமைதி தேவைப்படுகிறது. இது ஒரு பலவீனமல்ல — உண்மையான ஆழத்தையும் பரிவையும் கொண்டு வருகிறது — ஆனால் சூழல்கள் அவருக்கு மிகவும் முக்கியம் என்று பொருள்.",
+    "s1.c3.basis": "சந்திரன் அவரது D1-ன் 7-ஆம் வீட்டில் மீனத்தில் அமர்ந்துள்ளார் — சந்திரனுக்குக் கிடைக்கக்கூடிய மிக உணர்திறன் மிக்க, ஊடுருவக்கூடிய அமைவுகளில் ஒன்று.",
+    "s1.c4.title": "அவரது மனமே அவரது வலிமையான சொத்து",
+    "s1.c4.plain": "வேறு எதுவும் கடினமாக இருந்தாலும், அவரது அடிப்படை புத்திசாலித்தனம் ஒரு உண்மையான, நீடித்த சொத்து — நுணுக்கமான கவனிப்பு, பகுப்பாய்வு திறன், ஏதேனும் ஒன்று அவரது கவனத்தைப் பெற்றவுடன் உண்மையான ஆழத்திற்குச் செல்லும் திறன். மற்ற அனைத்தையும் இதைச் சுற்றி கட்டமைக்கத் தகுதியானது, கேள்விக்குரியது அல்ல.",
+    "s1.c4.basis": "அவரது லக்னாதிபதியான புதன், D1-ல் ஒரு திரிகோணத்தில் (5-ஆம் வீடு) அமர்ந்துள்ளார், D9-ல் தனது சொந்த ராசியில் லக்னத்தின் மீதே நேரடியாக உள்ளார் — இந்த கிரகத்திற்குக் கிடைக்கக்கூடிய மிக உயர்ந்த வலிமை, இரண்டு தனித்தனி ஜாதகங்களிலும் உறுதிப்படுத்தப்பட்டுள்ளது.",
+
+    "s2.h2": "இப்போதைக்கு முன் — அவரது முதல் மகாதசை (பிறப்பு முதல் ஏப்ரல் 2024 வரை)",
+    "s2.deck": "அவரது முதல் புத மகாதசை, பிறப்பிலிருந்து 14 வயது வரை. முன்னோக்கிச் செல்லும் அதே முறையில் பின்னோக்கிப் படிக்கப்படுகிறது — என்ன நடந்தது என்பதை விளக்குவதற்காக அல்ல, ஜாதகத்தின் சொந்த தர்க்கம் அதை எதிர்பாராதது இல்லை என்று காண்பிக்கிறதா என்று பார்ப்பதற்காக.",
+    "s2.i1.dates": "பிறப்பு–வயது 2",
+    "s2.i1.title": "ஒரு உறுதியான தொடக்கம்",
+    "s2.i1.plain": "மகாதசாதிபதியாகவும் அந்தர்தசாதிபதியாகவும் புதன் இருப்பது இந்த ஜாதகம் வழங்கும் மிகத் தூய்மையான தொடக்கம் — அவரது லக்னாதிபதி, தனது சொந்த திரிகோணத்தில், முதல் நாளிலிருந்தே தன் சொந்த நிலையில் வெளிப்படுகிறார்.",
+    "s2.i1.li1": "புத மகாதசை / புத அந்தர்தசை. புதன் அவரது லக்னாதிபதி, நண்பன் கண்ணியத்தில் 5-ஆம் வீட்டில் அமர்ந்துள்ளார்.",
+    "s2.i2.dates": "வயது ~2",
+    "s2.i2.title": "முதல், மங்கலான எதிரொலி",
+    "s2.i2.plain": "ஒரு குறுகிய காலகட்டம் — இப்போது அவரது தற்போதைய மகாதசையை இயக்கும் அதே கேது-10-ஆம் வீடு அமைவின் ஆரம்ப தோற்றம், ஒரு தசாப்தம் முன்னதாக. அந்த நேரத்தில் கவனிக்காமல் போயிருக்கக்கூடும்.",
+    "s2.i2.li1": "புத மகாதசை / கேது அந்தர்தசை. கேது அவரது 10-ஆம் வீட்டில் அமர்ந்துள்ளார்.",
+    "s2.i3.dates": "வயது ~2.75–5",
+    "s2.i3.title": "முக்கிய மொழி வளர்ச்சி ஆண்டுகள்",
+    "s2.i3.plain": "இந்த முழு வரிசையிலும் மிக முக்கியமான ஆரம்பகால அடையாளமாக இருக்கக்கூடும். ஆரம்பகால பேச்சு அல்லது மொழி வளர்ச்சியில் ஏதேனும் குறிப்பிடத்தக்கது இருந்திருந்தால், ஜாதகம் அதை இங்கேயே வைக்கும்.",
+    "s2.i3.li1": "புத மகாதசை / சுக்கிர அந்தர்தசை. சுக்கிரன் அவரது 2-ஆம் வீட்டை (பேச்சு) ஆளுகிறார், 6-ஆம் வீட்டில் அஸ்தமனமாக அமர்ந்துள்ளார் — பேச்சின் காரகன் அழுத்தத்தில், அவரது மிகவும் சுமையான வீட்டுடன் நேரடியாக இணைந்துள்ளார்.",
+    "s2.i4.dates": "வயது ~5",
+    "s2.i4.title": "பள்ளி தொடங்குதல்",
+    "s2.i4.plain": "வழக்கமான பள்ளி சேர்க்கை வயதில் கிட்டத்தட்ட துல்லியமாக விழும் ஒரு குறுகிய காலகட்டம் — கட்டமைக்கப்பட்ட கல்விக்கு மாறுவதில் ஏதேனும் ஆரம்பகால இடையூறு இருக்கக்கூடும்.",
+    "s2.i4.li1": "புத மகாதசை / சூரிய அந்தர்தசை. சூரியன் 6-ஆம் வீட்டில் எதிரி கண்ணியத்தில் அமர்ந்துள்ளார், 12-ஆம் வீட்டை (நிறுவனங்கள்) ஆளுகிறார்.",
+    "s2.i5.dates": "வயது ~6",
+    "s2.i5.title": "ஒப்பீட்டளவில் ஒத்திசைவான ஆண்டு",
+    "s2.i5.plain": "அவரது சந்திரன் இருக்கும் இடத்தைப் பொறுத்து ஒருபோதும் குறைந்த உணர்திறன் கொண்ட காலகட்டமாக இருக்காது, ஆனால் அதன் அருகிலுள்ள காலகட்டங்களை விட ஒப்பீட்டளவில் நிலையானது.",
+    "s2.i5.li1": "புத மகாதசை / சந்திர அந்தர்தசை. சந்திரன் மீனத்தில் நண்பன் நிலையில் உள்ளார், 11-ஆம் வீட்டை (சக வயதினர்) ஆளுகிறார்.",
+    "s2.i6.dates": "வயது ~7",
+    "s2.i6.title": "முதல் உண்மையான தூண்டல்",
+    "s2.i6.plain": "அவரது நீசமடைந்த, வக்கிர செவ்வாய் அந்தர்தசாதிபதியாக இயங்கிய அவரது வாழ்க்கையின் முதல் தருணம் இது. வயது 7 தீவிரத்தில் குறிப்பிடத்தக்க எழுச்சியைக் கொண்டிருந்தால், இதுவே அதை விளக்கும் சரியான காரணமாக இருக்கும் — 2026 அக்டோபருக்கும் மீண்டும் 2037-க்கும் இப்போது குறிக்கப்பட்டுள்ள அதே காரணம்.",
+    "s2.i6.li1": "புத மகாதசை / செவ்வாய் அந்தர்தசை — அவரது கடினமான அடையாள கிரகம், நேரடியாக செயல்படுத்தப்பட்டது, அவரது வாழ்க்கையில் முதல் முறையாக.",
+    "s2.i7.dates": "வயது ~8–10",
+    "s2.i7.title": "தேடல் மற்றும் தேங்கல் ஆண்டுகள்",
+    "s2.i7.plain": "நீண்ட, குறைவாக நிலைத்த இரண்டு வருட காலகட்டம் — கருப்பொருள் ரீதியாக, ஒரு குடும்பம் பெரும்பாலும் 'ஏதோ சரியில்லை' என்பதிலிருந்து மதிப்பீட்டைத் தீவிரமாகத் தேடுவதற்கு நகரும் வகையான காலகட்டம்.",
+    "s2.i7.li1": "புத மகாதசை / ராகு அந்தர்தசை. ராகு அவரது 4-ஆம் வீட்டில் (வீடு, உள் அடித்தளம்) அமர்ந்துள்ளார்.",
+    "s2.i8.dates": "வயது ~10–12",
+    "s2.i8.title": "ஒப்பீட்டளவில் தளர்வான காலம்",
+    "s2.i8.plain": "குழந்தைப் பருவத்தின் பிற்பாதியின் மென்மையான காலகட்டம், ஒரு குறிப்பிட்ட வலிமையான காலகட்டம் இல்லையென்றாலும். ஜாதகத்திற்கு வெளியே: இது தொற்றுநோய் ஆண்டுகளுடன் கிட்டத்தட்ட சரியாக ஒத்துப்போகிறது — ஜோதிட வாசிப்புக்கு பதிலாக அல்லாமல், அதனுடன் இணைந்த உண்மையான உலக சூழலாக வைத்திருக்க வேண்டியது.",
+    "s2.i8.li1": "புத மகாதசை / குரு அந்தர்தசை. குரு இங்கு அஸ்தமனமாகவும் பலவீனமாகவும் உள்ளார், ஆனால் ஒரு இயற்கை நல்ல கிரகமாகவே தொடர்கிறார்.",
+    "s2.i9.dates": "வயது ~12–14",
+    "s2.i9.title": "அழுத்தம் கட்டியெழுப்பும் அத்தியாயம்",
+    "s2.i9.plain": "இந்த முழு பின்னோக்கிப் பார்வையிலும் மிக முக்கியமான பதிவு இதுவாக இருக்கலாம். இரண்டு வருடங்களுக்கும் மேலாக, ஆரம்பகால வளர்ப்புப் பருவம் முழுவதும் ஓடி, கேது மகாதசை தொடங்குவதற்கு சில நாட்களுக்கு முன்பே முடிவடைந்து, வதிவிடப் பள்ளிக்கு மாறுவது அதைத் தொடர்ந்தது. நேரடியாகப் படித்தால்: இந்தக் காலகட்டம் நெருக்கடி தருணத்திற்கான ஓட்டமாகத் தெரிகிறது, ஒரு தொடர்பில்லாத தனி நிகழ்வாக அல்ல.",
+    "s2.i9.li1": "புத மகாதசை / சனி அந்தர்தசை. சனி அவரது சொந்த லக்னத்தின் மீதே வக்கிரமாக அமர்ந்துள்ளார், அவரது மிகவும் சுமையான வீட்டை ஆளுகிறார் — அவரது முழு குணநலனையும் வரையறுக்கும் அதே கிரகம், இந்த முழு காலகட்டத்திலும் அந்தர்தசாதிபதியாக இயங்குகிறது.",
+
+    "s3.h2": "இப்போது முதல் 2031 வரை",
+    "s3.deck": "அவரது தற்போதைய மகாதசை (கேது), அதன் அந்தர்தசைகளாகப் பிரிக்கப்பட்டுள்ளது. ஒவ்வொரு காலகட்டமும்: என்ன எதிர்பார்க்கலாம், பின்னர் — தனியாகப் பிரிக்கப்பட்டு — முடிவுக்குப் பின்னால் உள்ள ஜோதிட காரணம்.",
+    "s3.j1.title": "தற்போதைய தாளத்தில் நிலைபெறுதல்",
+    "s3.j1.plain": "இந்தக் காலகட்டம் கூர்மையான ஆக்ரோஷத்தை விட மனநிலை மற்றும் உணர்திறன் பற்றியது — அவர் எவ்வளவு புலனுணர்வு அல்லது உணர்ச்சி உள்ளீட்டை எடுத்துக்கொள்கிறார் என்பதைப் பொறுத்து நாட்கள் மாறலாம், ஆனால் இது முன்னால் உள்ள மிகக் கடினமான காலகட்டமாக இருக்கும் என்று எதிர்பார்க்கப்படவில்லை. அவரை என்ன மிகைப்படுத்துகிறது என்பதை சரியாகக் கவனிக்க இந்த நேரத்தைப் பயன்படுத்துவது மதிப்புள்ளது, ஏனெனில் அடுத்த காலகட்டம் திறக்கும்போது அந்த வடிவம் அதிகம் முக்கியமாகிறது.",
+    "s3.j1.li1": "கேது மகாதசை (10 ஏப் 2024 – 10 ஏப் 2031), சந்திர அந்தர்தசை (14 மார் – 13 அக் 2026)",
+    "s3.j1.li2": "சந்திரன் மீனத்தில் அமர்ந்துள்ளார் — அந்தர்தசாதிபதியின் உணர்திறன் தணிக்கப்படவில்லை, மேலும் அதிகரிக்கப்படுகிறது",
+    "s3.j1.li3": "கேது (மகாதசாதிபதி) இயல்பாகவே சிதறியது/முன்கணிக்க முடியாதது, ஆனால் அது ஆக்ரோஷத்துடன் தொடர்புடைய கிரகம் அல்ல",
+    "s3.j2.title": "தயார் நிலையில் இருக்க வேண்டிய காலகட்டம்",
+    "s3.j2.plain": "இந்த முழு காலவரிசையிலும் மிக அதிகமாகக் குறிக்கப்பட்ட காலகட்டம். கூடுதல் கட்டமைப்பு, மாற்றங்கள் குறித்த முன் அறிவிப்பு, பள்ளியிலும் வீட்டிலும் கூடுதல் ஆதரவு — இவை தொடங்குவதற்கு <em>முன்பே</em> தயாராக வைத்திருப்பது மதிப்புள்ளது, பிறகு அல்ல. இது தந்தைக்கும் தனிப்பட்ட முறையில் கோரிக்கை மிக்க காலகட்டமாக அமைகிறது — அவர் மிகவும் தேவைப்படும் நேரத்தில் சோர்ந்துபோகாமல் இருக்க, தனது சொந்த ஆதரவையும் ஒழுங்கமைத்துக் கொள்வது மதிப்புள்ளது.",
+    "s3.j2.li1": "மகன்: கேது மகாதசை / செவ்வாய் அந்தர்தசை (13 அக் 2026 – 11 மார் 2027) — அவரது மிகவும் கடினமான அமைவு, நேரடியாக செயல்படுத்தப்பட்டது",
+    "s3.j2.li2": "அவரது செவ்வாய் தனது 8-ஆம் வீட்டு விசேஷ பார்வையை அவரது 6-ஆம் வீட்டு கிரகக் கூட்டத்தின் மீதும், 7-ஆம் வீட்டு பார்வையை 5-ஆம் வீட்டில் உள்ள லக்னாதிபதியின் மீதும் செலுத்துகிறது",
+    "s3.j2.li3": "தந்தை: புத மகாதசை / கேது அந்தர்தசை (21 பிப் 2026 – 18 பிப் 2027), காலகட்டம் முழுவதும் கிட்டத்தட்ட மேலெழுந்து — தந்தையின் இயற்கை கேது தனது சொந்த 8-ஆம் வீட்டில் அமர்ந்துள்ளார், மகனிலிருந்து சுயாதீனமான, தனிப்பட்ட முறையில் கோரிக்கை மிக்க துணைக்காலம்",
+    "s3.j3.title": "மாற்றத்தை முயற்சிக்க ஏற்ற காலகட்டம்",
+    "s3.j3.plain": "திறன் அல்லது தொழில் சார்ந்த திட்டம் போன்ற ஒரு படி பரிசீலிக்கப்பட்டிருந்தால், அடுத்த சில ஆண்டுகளில் அதை முன்வைக்க இது மிகவும் ஜாதக-பொருந்தக்கூடிய காலகட்டம். மற்ற பெரும்பாலான காலகட்டங்களை விட மாற்றமே இப்போது எளிதாக நகரும்.",
+    "s3.j3.li1": "கேது மகாதசை / ராகு அந்தர்தசை (11 மார் 2027 – 29 மார் 2028) — ராகு மாற்றத்தின் பாரம்பரிய காரகன்; அதன் அந்தர்தசையில்தான் புதிய ஏற்பாடுகள் நிலைபெறுவதற்கான வாய்ப்பு அதிகம்",
+    "s3.j3.li2": "தந்தையின் நிலையான புத மகாதசை / சுக்கிர அந்தர்தசையுடன் (18 பிப் 2027 – 19 டிச 2029) மேலெழுகிறது — மாற்றத்தை ஆதரிக்க அதிக தனிப்பட்ட நிலைத்தன்மை கிடைக்கிறது",
+    "s3.j4.title": "மென்மையான, நம்பிக்கை தரும் காலகட்டம்",
+    "s3.j4.plain": "முந்தைய வருடத்தை விட ஓரளவு எளிதான உணர்ச்சி தொனி — முந்தைய காலகட்டத்தில் மாறியதை உறுதிப்படுத்தி, அது நிலைபெற அனுமதிக்க ஏற்ற காலகட்டம்.",
+    "s3.j4.li1": "கேது மகாதசை / குரு அந்தர்தசை (29 மார் 2028 – 5 மார் 2029) — இந்த ஜாதகத்தில் வேறு இடங்களில் பலவீனமாக இருந்தாலும், குரு ஒரு இயற்கை நல்ல கிரகமாகவே உள்ளார்; அதன் அந்தர்தசை அருகிலுள்ள காலகட்டங்களை விட விரிவானதாகப் படிக்கக்கூடும்",
+    "s3.j5.title": "நீடிக்கும் வழக்கத்தைக் கட்டியெழுப்புதல்",
+    "s3.j5.plain": "இதுவரை பலனளித்த கட்டமைப்பையும் தினசரி தாளத்தையும் வலுப்படுத்த ஒரு நல்ல காலகட்டம் — கருப்பொருள் ரீதியாக, வழக்கம் உண்மையிலேயே நிலைத்திருக்க அவரது சிறந்த பொருந்தும் காலகட்டம்.",
+    "s3.j5.li1": "கேது மகாதசை / சனி அந்தர்தசை (5 மார் 2029 – 14 ஏப் 2030) — சனி அவரது சொந்த லக்னத்தின் மீது அமர்ந்து 6-ஆம் வீட்டை ஆளுகிறார்; அதன் அந்தர்தசை அவரது நிலைத்தன்மை இயங்கும் அதே கிரகத்தை செயல்படுத்துகிறது",
+    "s3.j6.title": "பல ஆண்டுகளில் அவரது வலிமையான காலகட்டம்",
+    "s3.j6.plain": "இந்த முடிவடையும் அத்தியாயம் அவரது ஒற்றை வலிமையான அமைவுடன் ஒத்துப்போகிறது — தொடர்பு மற்றும் சுய மேலாண்மையில் உண்மையான, தெரியும் வளர்ச்சிக்காக கவனிக்க வேண்டிய காலம். இதே காலகட்டத்தில் தந்தையும் குறிப்பாக இருப்பதாகவும் உணர்ச்சி ரீதியாக கவனமாகவும் இருக்க வாய்ப்புள்ளது.",
+    "s3.j6.li1": "மகன்: கேது மகாதசை / புத அந்தர்தசை (14 ஏப் 2030 – 11 ஏப் 2031) — புதன் அவரது லக்னாதிபதி, D9 லக்னத்தில் சொந்த ராசியில், இரண்டு ஜாதகங்களிலும் அவரது மிகவும் கண்ணியமான அமைவு",
+    "s3.j6.li2": "தந்தை: புத மகாதசை / சந்திர அந்தர்தசை (25 அக் 2030 – 25 மார் 2032) — சந்திரன் அவரது அமாத்யகாரகன், பொதுவாக உணர்ச்சி ரீதியாக ஈடுபாடுள்ள, தொடர்பு மிக்க துணைக்காலம்",
+    "s3.j7.dates": "மைல்கல்",
+    "s3.j7.title": "ஒரு புதிய இருபது வருட அத்தியாயம் தொடங்குகிறது",
+    "s3.j7.plain": "அவரது வாழ்க்கையின் இந்த அத்தியாயத்தை வடிவமைத்த கேது மகாதசை முடிவடைந்து, இரண்டு தசாப்தங்கள் ஓடும் சுக்கிர மகாதசை தொடங்குகிறது. கட்டமைப்பு ரீதியாக, இது அவரது ஜாதகத்தில் காணக்கூடிய மிக நம்பிக்கைக்குரிய நீண்ட காலகட்டம்: கேது கொண்டு வந்த வகையான இடையூறை நோக்கி எதுவும் சுட்டவில்லை. ஆனாலும் எளிமை தானாக வராது — உண்மையிலேயே அன்பான, வசதியான, ஆதரவான சூழலுக்கு அது நன்றாக பதிலளிக்கிறது, தானாக வரும் என்று கருதுவதற்குப் பதிலாக அதைச் சுறுசுறுப்பாகக் கட்டியெழுப்ப வேண்டியது.",
+    "s3.j7.li1": "கேது மகாதசை (2024–2031) முடிவடைகிறது; சுக்கிர மகாதசை (2031–2051) தொடங்குகிறது. கேதுவின் 10-ஆம் வீடு தொடர்புக்கு மாறாக, சுக்கிரன் அவரது D1-ல் எந்த கடினமான வீட்டையும் ஆளவில்லை",
+    "s3.j7.li2": "சுக்கிரன் அவரது D1 மற்றும் D9 இரண்டிலும் அஸ்தமனமாக உள்ளார் — ஒட்டுமொத்தமாக உண்மையிலேயே சாதகமானது, ஆனால் முயற்சியின்றி வருவதற்குப் பதிலாக ஆதரவான சூழல்கள் தேவை",
+
+    "s4.h2": "அடுத்த இருபது ஆண்டுகள் — சுக்கிர மகாதசை (2031–2051)",
+    "s4.deck": "அதன் சொந்த துணைக் காலங்களாகப் பிரிக்கப்பட்டுள்ளது, அதே வடிவமைப்பு. உண்மையான தயார்நிலை தேவைப்படும் இரண்டு துணைக் காலங்களுடன் அவரது மிக நம்பிக்கைக்குரிய நீண்ட அத்தியாயம்.",
+    "s4.k1.title": "சுக்கிரன் தானே பேசுதல்",
+    "s4.k1.plain": "புதிய மகாதசையின் தொடக்க அத்தியாயம், சுக்கிரனே அந்தர்தசாதிபதியாக — இந்தக் காலகட்டத்தின் சிறந்த இயல்பின் தெளிவான, நேரடியான வெளிப்பாடாக இருக்கக்கூடும்: சமூக எளிமை, வசதி, முந்தைய ஏழு ஆண்டுகளை விட பொதுவாக மென்மையான உணர்ச்சி காலநிலை. ஒரு நல்ல அடித்தளம் அமைக்கும் காலகட்டம், இருப்பினும் எந்த ஒரு தனி சாதனைக்கும் அதுவே கூர்மையான அறிகுறி அல்ல.",
+    "s4.k1.li1": "சுக்கிர மகாதசை / சுக்கிர அந்தர்தசை (10 ஏப் 2031 – 10 ஆக 2034)",
+    "s4.k1.li2": "சுக்கிரன் D1-ல் அவரது 2-ஆம் வீட்டையும் (பேச்சு/வெளிப்பாடு) 9-ஆம் வீட்டையும் (உயர் கல்வி, வழிகாட்டிகள்) ஆளுகிறார் — இரண்டுமே வசதியான, திரிகோண-அருகிலுள்ள அர்த்தங்கள்",
+    "s4.k2.title": "ஒரு குறுகிய நிறுவன எதிரொலி",
+    "s4.k2.plain": "சுமார் ஒரு வருடம் நீடிக்கும் ஒரு குறுகிய காலகட்டம், நிர்வாக, நிறுவன, அல்லது இருப்பிடம் தொடர்பான இடையூறைக் கொண்டு வரலாம் — ஒரு மறுஆய்வு, ஒரு மாற்றத் தருணம், கவனம் தேவைப்படும் ஏதாவது நிர்வாகச் சிக்கல். கடுமையானதாக இருக்கும் என்று எதிர்பார்க்கப்படவில்லை, விரைவாகவும் கடந்துவிடும்.",
+    "s4.k2.li1": "சுக்கிர மகாதசை / சூரிய அந்தர்தசை (10 ஆக 2034 – 10 ஆக 2035)",
+    "s4.k2.li2": "சூரியன் அவரது 12-ஆம் வீட்டை (நிறுவனங்கள், விலகல், இழப்பு) ஆளுகிறார், 6-ஆம் வீட்டில் எதிரி கண்ணியத்தில் அமர்ந்துள்ளார் — வேறு அதிபதி வழியாக 6-ஆம் வீட்டு கருப்பொருளின் குறுகிய திரும்புதல்",
+    "s4.k3.title": "சமூகமும் தொடர்பும் வளர்கின்றன",
+    "s4.k3.plain": "அவரது வட்டத்தை விரிவுபடுத்த ஆதரவான காலகட்டம் — சக வயதினர் உறவுகள், ஒரு குழு அல்லது சமூகத்தின் ஒரு பகுதி என்ற உணர்வு, அர்த்தமுள்ள நட்புகள் உருவாகக்கூடும்.",
+    "s4.k3.li1": "சுக்கிர மகாதசை / சந்திர அந்தர்தசை (10 ஆக 2035 – 11 ஏப் 2037)",
+    "s4.k3.li2": "சந்திரன் அவரது 11-ஆம் வீட்டு சக வயதினர்/சமூகத்தை ஆளுகிறார், மீனத்தில் நண்பன் கண்ணியத்தில் அமர்ந்துள்ளார்",
+    "s4.k4.title": "செவ்வாய் மீண்டும் திரும்புகிறது",
+    "s4.k4.plain": "2026–27-ல் இருந்த அதே கடினமான அமைவு, சுமார் ஒரு தசாப்தத்திற்குப் பிறகு, இளம் வயது வளர்ச்சியில். அதே வழியில் திட்டமிடுவது மதிப்புள்ளது — கூடுதல் கட்டமைப்பு, அதிக பொறுமை, முன்கூட்டியே ஏற்பாடு செய்யப்பட்ட கூடுதல் ஆதரவு.",
+    "s4.k4.li1": "சுக்கிர மகாதசை / செவ்வாய் அந்தர்தசை (11 ஏப் 2037 – 11 ஜூன் 2038) — அவரது நீசமடைந்த, வக்கிர செவ்வாய் மீண்டும் நேரடியாக செயல்படுத்தப்படுகிறது, 2026–27-ல் இருந்த அதே காரணம்",
+    "s4.k5.title": "வீட்டில் நிலையற்ற தளம்",
+    "s4.k5.plain": "வீட்டு சூழ்நிலைகள் அல்லது வாழ்விட ஏற்பாடுகள் வழக்கத்தை விட மாறக்கூடிய, குறைவாக நிலைத்த ஒரு நீண்ட, மூன்று வருட காலகட்டம். அவசியம் எதிர்மறையானது அல்ல, ஆனால் மாற்றத்திற்கு வாய்ப்புள்ளது. எதிர்ப்பதை விட கவனிப்பது மதிப்புள்ளது.",
+    "s4.k5.li1": "சுக்கிர மகாதசை / ராகு அந்தர்தசை (11 ஜூன் 2038 – 11 ஜூன் 2041)",
+    "s4.k5.li2": "ராகு அவரது வீடு மற்றும் உள் அடித்தளத்தின் 4-ஆம் வீட்டில் அமர்ந்துள்ளார் — அதன் அந்தர்தசை அந்த அதே பகுதிக்கு மறுசீரமைப்பைக் கொண்டு வரும் வாய்ப்புள்ளது",
+    "s4.k6.title": "விரிவாக்கம், உறவு, ஆழம்",
+    "s4.k6.plain": "உண்மையிலேயே நம்பிக்கைக்குரிய பல வருட காலகட்டம் — உறவுகளில் வளர்ச்சி, வீட்டு நிலைத்தன்மையின் ஆழமான உணர்வு, வழக்கத்தை விட விரிவான, நம்பிக்கையான பார்வை.",
+    "s4.k6.li1": "சுக்கிர மகாதசை / குரு அந்தர்தசை (11 ஜூன் 2041 – 9 பிப் 2044)",
+    "s4.k6.li2": "குரு அவரது 4-ஆம் வீட்டையும் (வீடு) 7-ஆம் வீட்டையும் (கூட்டாண்மை) ஆளுகிறார்; அஸ்தமனமாக இருந்தாலும், ஒரு இயற்கை நல்ல கிரகமாகவே உள்ளார், இந்த அந்தர்தசை அந்த அழுத்தத்தை மென்மையாக்கும்",
+    "s4.k7.title": "ஒரு பணி வாழ்க்கை முதிர்ச்சியடையும் இடம்",
+    "s4.k7.plain": "ஜாதகத்தின் சொந்த தர்க்கத்தின்படி, ஒரு கட்டமைக்கப்பட்ட, சேவை- அல்லது திறன்- சார்ந்த வேலை வழக்கம் உண்மையிலேயே முதிர்ச்சியடைந்து நிலைபெற — வெறும் பராமரிக்கப்படுவதற்குப் பதிலாக, செழிக்க — அவரது தசா வரிசையில் எங்கும் இதுவே வலிமையான வேட்பாளர்.",
+    "s4.k7.li1": "சுக்கிர மகாதசை / சனி அந்தர்தசை (9 பிப் 2044 – 11 ஏப் 2047)",
+    "s4.k7.li2": "சனி அவரது லக்னத்தின் மீது அமர்ந்து சேவை மற்றும் தினசரி வேலையின் 6-ஆம் வீட்டை ஆளுகிறார் — அதன் அந்தர்தசை அந்த கட்டமைப்பை நேரடியாக செயல்படுத்துகிறது",
+    "s4.k8.title": "அங்கீகாரத்திற்கான அவரது சிறந்த காலகட்டம்",
+    "s4.k8.plain": "முழு ஜாதகத்திலும் அவரது மிகவும் கண்ணியமான அமைவு, கிட்டத்தட்ட மூன்று ஆண்டுகளுக்கு அந்தர்தசாதிபதியாக இயங்குகிறது — ஒரு கட்டமைக்கப்பட்ட பாத்திரத்தில் உண்மையான, தெரியும் திறமைக்கும் நம்பிக்கைக்கும் வலிமையான வேட்பாளர்.",
+    "s4.k8.li1": "சுக்கிர மகாதசை / புத அந்தர்தசை (11 ஏப் 2047 – 9 பிப் 2050)",
+    "s4.k8.li2": "புதன் அவரது லக்னாதிபதி, D9-ல் சொந்த ராசியில், D1-ல் தொழிலின் 10-ஆம் வீட்டை ஆளுகிறார்",
+    "s4.k9.title": "ஒரு குறுகிய, முடிவடையும் காலகட்டம்",
+    "s4.k9.plain": "சுக்கிர மகாதசையை முடிக்கும் ஒரு சுருக்கமான இறுதி துணைக்காலம் — ஒரு முக்கிய நிகழ்வு காலகட்டத்தை விட, இயற்கையான ஓய்வுப் புள்ளி.",
+    "s4.k9.li1": "சுக்கிர மகாதசை / கேது அந்தர்தசை (9 பிப் 2050 – 11 ஏப் 2051)",
+
+    "s5.h2": "2051-க்குப் பிறகு — நீண்ட கால அடையாளங்கள்",
+    "s5.deck": "மகாதசை மட்டத்தில் மட்டுமே, அந்தர்தசை பிரிவு இல்லை — அந்த தெளிவுத்திறனுக்கு அர்த்தமுள்ளதாக இருக்க முடியாத அளவு தொலைவில் உள்ளது. முழுமைக்காக சேர்க்கப்பட்டுள்ளது, திட்டமிடுவதற்கு எதிராக அல்ல.",
+    "s5.l1.dates": "வயது 41–47",
+    "s5.l1.title": "ஒரு விலகும், நிர்வாக அத்தியாயம்",
+    "s5.l1.plain": "விலகல், நிறுவன அல்லது நிர்வாக விஷயங்கள், அல்லது ஆரோக்கியம் மற்றும் தினசரி செயல்பாட்டு வழக்கங்களுக்கு புதுப்பிக்கப்பட்ட கவனம் ஆகியவற்றின் கருப்பொருள்களைக் கொண்டு வரக்கூடிய ஆறு வருட காலகட்டம்.",
+    "s5.l1.li1": "சூரிய மகாதசை (2051–2057). சூரியன் அவரது 12-ஆம் வீட்டை ஆளுகிறார், 6-ஆம் வீட்டில் எதிரி கண்ணியத்தில் அமர்ந்துள்ளார் — வீடு அதிபத்தியம் மற்றும் அமைவின்படி ஓரளவு கடினமான மகாதசை",
+    "s5.l2.dates": "வயது 47–57",
+    "s5.l2.title": "சமூக ரீதியாக செழிப்பான தசாப்தம்",
+    "s5.l2.plain": "அவரது வயது வந்தோர் வாழ்க்கையில் மிகவும் ஆதரவான, நன்கு தொடர்புடைய தசாப்தங்களில் ஒன்றாக இருக்கக்கூடும் — சமூகம், நட்பு, உறவுகள் மூலம் ஆதாய உணர்வு.",
+    "s5.l2.li1": "சந்திர மகாதசை (2057–2067). சந்திரன் ஆதாயத்தின் 11-ஆம் வீட்டையும் சமூகத்தையும் ஆளுகிறார், மீனத்தில் நண்பன் கண்ணியத்தில் அமர்ந்துள்ளார்",
+    "s5.l3.dates": "வயது 57–64",
+    "s5.l3.title": "செவ்வாய், மகாதசை அளவில்",
+    "s5.l3.plain": "அவரது மிகக் கடினமான கிரகம் இப்போது ஒரு துணைக்காலம் மட்டுமல்ல, முழு காலகட்டத்தையும் இயக்குகிறது — உண்மையான கட்டமைப்பும் ஆதரவும் தேவைப்படும் காலகட்டமாக தீவிரமாக எடுத்துக்கொள்ள வேண்டியது, இந்த வாழ்க்கை கட்டத்தில் நடத்தையை விட ஆரோக்கியம் மற்றும் உயிர்ச்சக்தி மூலம் அதிகம் வெளிப்படக்கூடும்.",
+    "s5.l3.li1": "செவ்வாய் மகாதசை (2067–2074). செவ்வாய் அவரது D1-ல் நீசமடைந்து வக்கிரமாகவே தொடர்கிறார் — அதே அடிப்படை அமைவு, இப்போது மகாதசை அளவில்",
+    "s5.l4.dates": "வயது 64–82",
+    "s5.l4.title": "நீண்ட, நிலையற்ற வாழ்க்கையின் பிற்பகுதி காலகட்டம்",
+    "s5.l4.plain": "வீடு, உள் அமைதி, மற்றும் பிற்கால வாழ்க்கையில் குறிப்பிடத்தக்க மறுசீரமைப்பு ஆகியவற்றைத் தொடும் 18 வருட காலகட்டம். குறிப்பிட்டவற்றுக்கு மிக தொலைவில் உள்ளது — வடிவம் பதிவில் இருக்க வேண்டும் என்பதற்காக இங்கே பதிவு செய்யப்பட்டுள்ளது.",
+    "s5.l4.li1": "ராகு மகாதசை (2074–2092). ராகு அவரது வீடு மற்றும் உள் அடித்தளத்தின் 4-ஆம் வீட்டில் அமர்ந்துள்ளார் — ஏற்கனவே அமைதியற்ற அமைவின் மீது கட்டப்பட்ட நீண்ட மகாதசை",
+    "s5.l5.dates": "வயது 82–98",
+    "s5.l5.title": "அமைதியான, நல்ல முடிவு",
+    "s5.l5.plain": "நம்பிக்கையுடன் பேச மிக தொலைவில் உள்ளது, ஆனால் கட்டமைப்பு ரீதியாக அவரது மீதமுள்ள மகாதசைகளில் மிக மென்மையானது.",
+    "s5.l5.li1": "குரு மகாதசை (2092–2108). குரு அவரது D1-ல் அஸ்தமனமாக உள்ளார் ஆனால் இயற்கை நல்ல கிரகமாகவே தொடர்கிறார்; துஷ்டான அதிபத்தியம் எதுவும் இல்லை",
+    "s5.l6.dates": "வயது 98–117",
+    "s5.l6.title": "நடைமுறை திட்டமிடல் எல்லைக்கு அப்பால்",
+    "s5.l6.plain": "முழுமைக்காக மட்டுமே சேர்க்கப்பட்டுள்ளது — இந்த மகாதசை இந்த காலவரிசை அர்த்தமுள்ளதாக பேசக்கூடிய எந்த வயதையும் தாண்டி விழுகிறது.",
+    "s5.l6.li1": "சனி மகாதசை (2108–2127). சனி அவரது லக்னத்தையும் 6-ஆம் வீட்டையும் ஆளுகிறார் — கருப்பொருள் ரீதியாக 'கட்டமைப்புக்குத் திரும்புதல்', நடைமுறையில் செயல்படுத்தக்கூடிய பதிவு அல்ல",
+
+    "s6.h2": "நடைமுறை ஆதரவு யோசனைகள்",
+    "s6.deck": "அவரது பள்ளியின் சொந்த திட்டத்துடன் சேர்த்து முயற்சிக்க மதிப்புள்ளது, அதற்குப் பதிலாக அல்ல — மேலும் ஏற்றுக்கொள்வதற்கு முன் அவரது பராமரிப்புக் குழுவிடம் சரிபார்ப்பது மதிப்புள்ளது.",
+    "s6.c1.title": "தாள, கட்டமைக்கப்பட்ட உடல் செயல்பாடுகள் — பெரும்பாலான நாட்களில் அதே நேரத்தில்",
+    "s6.c1.plain": "நீச்சல், ஓட்டம், அல்லது சைக்கிள் ஓட்டுதல் ஒரு நிலையான தினசரி அல்லது கிட்டத்தட்ட தினசரி அட்டவணையில். போட்டி மிக்க அல்லது மோதல் தன்மையுள்ள விளையாட்டை விட நீர் சார்ந்த செயல்பாட்டிற்கு முன்னுரிமை அளிப்பது குறிப்பாக மதிப்புள்ளது.",
+    "s6.c1.basis": "அவரது செவ்வாய் கடகத்தில், ஒரு நீர் ராசியில் அமர்ந்துள்ளார் — அவரது இயற்கையான நெருப்பு ஏற்கனவே அங்கே சங்கடமாக உள்ளது. நீர் சார்ந்த செயல்பாடு, அழுத்தத்தில் உள்ள செவ்வாய்க்கு குளிர்ச்சியூட்டுவதாகவும் அமைதிப்படுத்துவதாகவும் படிக்கிறது; திடீர் அல்லது எதிர்பாராத வெளியீடுகளை விட தாளமும் மறுசெய்கையும் அவரது வக்கிர செவ்வாய்க்கு நன்றாகப் பொருந்தும்.",
+    "s6.c2.title": "கை வேலைகள், இலக்கு சார்ந்த பணிகள்",
+    "s6.c2.plain": "கட்டுமானம், தோட்டவேலை, அல்லது கைவினை வேலை — உடல் ரீதியாக ஈடுபடுவது ஆனால் திறந்தநிலை அல்லது வெடிப்பு தன்மையற்று, கட்டமைக்கப்பட்டு விதிகளுக்கு உட்பட்டது.",
+    "s6.c2.basis": "அதே செவ்வாய் அமைவு — மூல வெளியீட்டை விட கட்டமைப்பின் வழியாக அதன் ஆற்றலைச் செலுத்துகிறது.",
+    "s6.c3.title": "செவ்வாய்க்கிழமை பயிற்சி — அனுமன்",
+    "s6.c3.plain": "செவ்வாய்க்கிழமைகளில் ஒரு எளிய வாராந்திர பயிற்சி, குடும்பத்திற்கு பொருந்தும் எந்த வடிவத்திலும்.",
+    "s6.c3.basis": "அனுமன் கடினமான செவ்வாயை அமைதிப்படுத்துவதோடு மிகவும் தொடர்புடைய பாரம்பரிய தெய்வம் — மேலும், பிரபலமான பாரம்பரியத்தில், கடினமான சனிக்காகவும் வேண்டப்படுகிறார், இது இங்கே முக்கியமானது ஏனெனில் சனியும் அவரது ஜாதகத்தில் சமமாக மையமானவர்.",
+    "s6.c4.title": "நிலையான, நம்பகமான வழிகாட்டி நபர்",
+    "s6.c4.plain": "பொறுமையாகவும், நிலையாகவும், தொடர்ந்து இருக்கும் நேரடி குடும்பத்திற்கு வெளியே ஒன்று அல்லது இரண்டு பெரியவர்களில் முதலீடு செய்தல் — ஒரு பயிற்சியாளர், ஒரு சிகிச்சையாளர், அவர் தொடர்பு கொள்ளும் ஒரு ஆசிரியர்.",
+    "s6.c4.basis": "வழிகாட்டுதலில் நம்பிக்கையை ஆளும் குரு, அவரது D1 மற்றும் D9 இரண்டிலும் அஸ்தமனமாக உள்ளார், D9-ல் நீசமடைந்துள்ளார். அவரது இயற்கையாக மிகவும் குறைவாக ஓடும் கிரகம்; தனியாக வளர விடுவதை விட சுறுசுறுப்பாக ஊட்டப்படுவதற்கு நன்றாக பதிலளிக்கிறது.",
+
+    "disclaimer.p": "உங்கள் தனிப்பட்ட, முழுமையான குறிப்பு — பாரம்பரிய வேத ஜோதிட முறையிலிருந்து பெறப்பட்டது, சிந்தனைக்கும் திட்டமிடலுக்கும், மருத்துவ வழிகாட்டுதலுக்கு அல்ல. அவரது பள்ளி மற்றும் மருத்துவக் குழுவின் மதிப்பீடு அல்லது திட்டத்திற்கு மாற்றாக அல்ல. ஒரு காலகட்டம் தொலைவில் இருக்கும் போது நம்பகத்தன்மை இயல்பாகவே குறைகிறது; 2030களின் நடுப்பகுதிக்குப் பிறகு எதையும் இன்று செயல்பட வேண்டிய முன்னறிவிப்பை விட, தெரிந்துகொள்ள மதிப்புள்ள ஒரு வடிவமாகக் கருதுங்கள். ஒவ்வொரு காலகட்டமும் முடிவடையும்போது மீண்டும் பார்வையிடுவது மதிப்புள்ளது."
+  };
+
+  var originalHTML = {};
+  var nodes = document.querySelectorAll('[data-k]');
+  for (var i = 0; i < nodes.length; i++) {
+    var k = nodes[i].getAttribute('data-k');
+    if (!(k in originalHTML)) originalHTML[k] = nodes[i].innerHTML;
+  }
+
+  function setLang(lang){
+    var els = document.querySelectorAll('[data-k]');
+    for (var i = 0; i < els.length; i++) {
+      var el = els[i];
+      var k = el.getAttribute('data-k');
+      if (lang === 'ta' && TA.hasOwnProperty(k)) {
+        el.innerHTML = TA[k];
+      } else {
+        el.innerHTML = originalHTML[k];
+      }
+    }
+    document.documentElement.setAttribute('data-lang', lang);
+    document.documentElement.lang = lang === 'ta' ? 'ta' : 'en';
+    var btns = document.querySelectorAll('.lang-btn');
+    for (var j = 0; j < btns.length; j++) {
+      var isActive = btns[j].getAttribute('data-lang-btn') === lang;
+      btns[j].classList.toggle('active', isActive);
+    }
+  }
+
+  var toggleBtns = document.querySelectorAll('.lang-btn');
+  for (var b = 0; b < toggleBtns.length; b++) {
+    toggleBtns[b].addEventListener('click', function(){
+      setLang(this.getAttribute('data-lang-btn'));
+    });
+  }
+
+  setLang('en');
+})();
+</script>
